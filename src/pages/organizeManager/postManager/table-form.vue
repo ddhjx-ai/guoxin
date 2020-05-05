@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$emit("on-submit", this.data.createNameOrCode);
+      this.$emit("on-submit", this.data);
     },
     handleReset() {
       this.$refs.form.resetFields();

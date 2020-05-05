@@ -17,7 +17,7 @@ const Setting = {
     // 页面切换时，是否显示模拟的进度条
     showProgressBar: true,
     // 接口请求地址
-    apiBaseURL: env === 'development' ? '/' : '/',
+    apiBaseURL: env === 'development' ? '127.0.0.1' : '127.0.0.1',
     // 接口请求返回错误时，弹窗的持续时间，单位：秒
     modalDuration: 3,
     // 接口请求返回错误时，弹窗的类型，可选值为 Message 或 Notice
@@ -77,9 +77,9 @@ const Setting = {
         // 是否显示重载按钮
         showReload: true,
         // 是否显示搜索
-        showSearch: true,
+        showSearch: false,
         // 是否显示通知
-        showNotice: true,
+        showNotice: false,
         // 是否显示全屏
         showFullscreen: true,
         // 在手机访问时，是否在顶部显示小尺寸 logo
@@ -89,9 +89,9 @@ const Setting = {
         // 全局面包屑是否显示图标，开启 showBreadcrumb 时有效
         showBreadcrumbIcon: false,
         // 是否显示日志入口，开启与否，不影响日志记录，如不希望用户看到可关闭
-        showLog: true,
+        showLog: false,
         // 是否显示多语言
-        showI18n: true,
+        showI18n: false,
         // 是否支持动态修改布局配置，移动端下会自动强制关闭
         enableSetting: true,
         // 退出登录时，是否二次确认
