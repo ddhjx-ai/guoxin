@@ -1,6 +1,4 @@
 import dashboard from "./modules/dashboard";
-import personManager from "./modules/personManager";
-import organizeManager from "./modules/organizeManager";
 import BasicLayout from "@/layouts/basic-layout";
 
 /**
@@ -59,9 +57,7 @@ const frameIn = [
       },
     ],
   },
-  dashboard,
-  personManager,
-  organizeManager
+  dashboard
 ];
 
 /**
