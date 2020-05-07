@@ -143,7 +143,7 @@ export default {
         ...this.searchForm,
         ...this.pageForm
       };
-      CultureSpecial(params).then(res => {
+      GetSupList(params).then(res => {
         this.loading = false;
         this.dataList = res.list;
         this.pageForm.total = res.total;

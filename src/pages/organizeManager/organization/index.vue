@@ -2,28 +2,30 @@
   <div>
     <Card :bordered="false" dis-hover class="ivu-mt">
       <Row :gutter="20">
-        <Col :span="6" style="border-right: 2px solid #ccc;">
-          <Row :gutter="24" style="height:58px">
-            <Col :span="15">
-              <Input v-model="searchKey" placeholder="输入关键字进行过滤" />
-            </Col>
-            <Col :span="6">
-              <Button type="primary">查询</Button>
-            </Col>
-          </Row>
-          <el-tree :data="data" node-key="id" default-expand-all :expand-on-click-node="false">
-            <span class="custom-tree-node" slot-scope="{ node, data }">
-              <span>{{ node.label }}</span>
-              <span>
-                <i class="el-icon-plus" @click="() => append(data)"></i>
-                <i class="el-icon-edit"></i>
-                <i class="el-icon-delete" @click="() => remove(node, data)"></i>
-                <!-- <el-button class="el-icon-plus" type="text" size="mini" @click="() => append(data)"></el-button>
+        <Col class="leftCard" :span="6" style="border-right: 2px solid #ccc;">
+          <Card :bordered="false" dis-hover class="ivu-mt" style="height:652px;overflow-y: auto;">
+            <Row :gutter="24" style="height:58px">
+              <Col :span="15">
+                <Input v-model="searchKey" placeholder="输入关键字进行过滤" />
+              </Col>
+              <Col :span="6">
+                <Button type="primary">查询</Button>
+              </Col>
+            </Row>
+            <el-tree :data="data" node-key="id" default-expand-all :expand-on-click-node="false">
+              <span class="custom-tree-node" slot-scope="{ node, data }">
+                <span>{{ node.label }}</span>
+                <span>
+                  <i class="el-icon-plus" @click="() => append(data)"></i>
+                  <i class="el-icon-edit"></i>
+                  <i class="el-icon-delete" @click="() => remove(node, data)"></i>
+                  <!-- <el-button class="el-icon-plus" type="text" size="mini" @click="() => append(data)"></el-button>
                 <el-button class="el-icon-edit" type="text" size="mini" @click="() => remove(node, data)"></el-button>
-                <el-button class="el-icon-delete" type="text" size="mini" @click="() => remove(node, data)"></el-button> -->
+                  <el-button class="el-icon-delete" type="text" size="mini" @click="() => remove(node, data)"></el-button>-->
+                </span>
               </span>
-            </span>
-          </el-tree>
+            </el-tree>
+          </Card>
         </Col>
         <Col :span="18">
           <!-- <table-form @on-submit="getData" @on-reset="getData" /> -->
@@ -33,12 +35,7 @@
     </Card>
 
     <!-- 新增部门 -->
-    <Modal
-      v-model="departmentModal"
-      title="新增部门"
-      @on-visible-change="changeModal"
-      width="600"
-    >
+    <Modal v-model="departmentModal" title="新增部门" @on-visible-change="changeModal" width="600">
       <Form ref="dataForm" :model="departmentData" :rules="rules" :label-width="100">
         <Row :gutter="20">
           <Col :span="24">
@@ -51,7 +48,7 @@
               <Input v-model="departmentData.username" placeholder="请输入" />
             </FormItem>
           </Col>
-        
+
           <Col :span="24">
             <FormItem label="部门类型：" prop="phone">
               <Select v-model="departmentData.department" placeholder="请选择">
@@ -204,9 +201,7 @@ export default {
         children: "children",
         label: "label"
       },
-      departmentData: {
-
-      },
+      departmentData: {},
       departmentModal: false
     };
   },
@@ -215,8 +210,8 @@ export default {
       this.$refs.table.getData(item);
     },
     append(data) {
-      console.log(data)
-      this.departmentModal = true
+      console.log(data);
+      this.departmentModal = true;
       /* const newChild = { id: id++, label: "testtest", children: [] };
       if (!data.children) {
         this.$set(data, "children", []);
@@ -241,15 +236,9 @@ export default {
       children.splice(index, 1); */
     },
 
-    changeModal() {
-
-    },
-    cancelModal() {
-
-    },
-    handleSave() {
-
-    }
+    changeModal() {},
+    cancelModal() {},
+    handleSave() {}
   },
   mounted() {
     this.getData();
@@ -279,7 +268,12 @@ export default {
   }
 }
 
-[class*=" el-icon-"], [class^=el-icon-]{
+[class*=" el-icon-"],
+[class^="el-icon-"] {
   margin: 0 3px;
 }
+/* .leftCard {
+  max-height: 90vh;
+  overflow-y: auto;
+} */
 </style>

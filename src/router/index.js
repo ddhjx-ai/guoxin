@@ -25,7 +25,7 @@ const router = new VueRouter({
  * 权限验证
  */
 
-router.beforeEach((to, from, next) => {
+/* router.beforeEach((to, from, next) => {
     if (Setting.showProgressBar) iView.LoadingBar.start();
     // 判断是否需要登录才可以进入
     if (to.matched.some(_ => _.meta.auth)) {
@@ -60,6 +60,6 @@ router.afterEach(to => {
     });
     // 返回页面顶端
     window.scrollTo(0, 0);
-});
+}); */
 
 export default router;

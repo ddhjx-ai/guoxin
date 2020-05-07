@@ -20,7 +20,7 @@
       <template slot-scope="{ row, index }" slot="action">
         <a @click="handleUpdate(index)">编辑</a>
         <Divider type="vertical" />
-        <a @click="handleRemove(index)">删除</a>
+        <a @click="handleRemove(index)">详情</a>
         <Divider type="vertical" />
         <a @click="handlePost(row.id)">分配岗位</a>
       </template>

@@ -11,13 +11,14 @@ const Setting = {
     // 网页标题的后缀
     titleSuffix: 'iView Admin Pro',
     // 路由模式，可选值为 history 或 hash
-    routerMode: 'history',
+    routerMode: 'hash',
     // 应用的基路径
     routerBase: '/',
     // 页面切换时，是否显示模拟的进度条
     showProgressBar: true,
     // 接口请求地址
-    apiBaseURL: env === 'development' ? '127.0.0.1' : '127.0.0.1',
+    // apiBaseURL: env === 'development' ? '/' : '/',
+    apiBaseURL: env === 'development' ? 'http://192.168.0.104' : 'http://192.168.0.104',
     // 接口请求返回错误时，弹窗的持续时间，单位：秒
     modalDuration: 3,
     // 接口请求返回错误时，弹窗的类型，可选值为 Message 或 Notice
