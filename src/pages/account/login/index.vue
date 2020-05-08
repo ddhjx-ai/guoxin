@@ -8,18 +8,18 @@
         <div class="page-account-top-logo">
           <img src="@/assets/images/logo.png" alt="logo" />
         </div>
-        <div class="page-account-top-desc">iView Admin Pro 企业级中台前端/设计解决方案</div>
+        <!-- <div class="page-account-top-desc">iView Admin Pro 企业级中台前端/设计解决方案</div> -->
       </div>
-      <Login @on-submit="handleSubmit">
+      <Login @on-submit="handleSubmit" style="">
         <UserName name="username" value="admin" />
         <Password name="password" value="admin" enter-to-submit />
-        <div class="page-account-auto-login">
+        <!-- <div class="page-account-auto-login">
           <Checkbox v-model="autoLogin" size="large">{{ $t('page.login.remember') }}</Checkbox>
           <a href>{{ $t('page.login.forgot') }}</a>
-        </div>
+        </div> -->
         <Submit>{{ $t('page.login.submit') }}</Submit>
       </Login>
-      <div class="page-account-other">
+      <!-- <div class="page-account-other">
         <span>{{ $t('page.login.other') }}</span>
         <img src="@/assets/svg/icon-social-wechat.svg" alt="wechat" />
         <img src="@/assets/svg/icon-social-qq.svg" alt="qq" />
@@ -28,9 +28,9 @@
           class="page-account-register"
           :to="{ name: 'register' }"
         >{{ $t('page.login.signup') }}</router-link>
-      </div>
+      </div> -->
     </div>
-    <i-copyright />
+    <!-- <i-copyright /> -->
   </div>
 </template>
 <script>
@@ -47,7 +47,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions("admin/account", ["login"]),
+    // ...mapActions("admin/account", ["login"]),
     /**
      * @description 登录
      * 表单校验已有 iView Pro 自动完成，如有需要修改，请阅读 iView Pro 文档

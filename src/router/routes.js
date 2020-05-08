@@ -1,4 +1,5 @@
 import dashboard from "./modules/dashboard";
+import powerManager from './modules/powerManager'
 import BasicLayout from "@/layouts/basic-layout";
 
 /**
@@ -57,7 +58,8 @@ const frameIn = [
       },
     ],
   },
-  dashboard
+  dashboard,
+  powerManager
 ];
 
 /**

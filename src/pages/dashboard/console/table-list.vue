@@ -145,8 +145,8 @@ export default {
       };
       GetSupList(params).then(res => {
         this.loading = false;
-        this.dataList = res.list;
-        this.pageForm.total = res.total;
+        this.dataList = res.data.data;
+        this.pageForm.total = res.data.total;
       }).catch(() => {
         this.loading = false
       })

@@ -18,7 +18,7 @@ const Setting = {
     showProgressBar: true,
     // 接口请求地址
     // apiBaseURL: env === 'development' ? '/' : '/',
-    apiBaseURL: env === 'development' ? 'http://192.168.0.104' : 'http://192.168.0.104',
+    apiBaseURL: env === 'development' ? 'http://localhost' : 'http://localhost',
     // 接口请求返回错误时，弹窗的持续时间，单位：秒
     modalDuration: 3,
     // 接口请求返回错误时，弹窗的类型，可选值为 Message 或 Notice
