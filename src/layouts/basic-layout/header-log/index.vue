@@ -1,10 +1,10 @@
 <template>
     <Tooltip :content="tooltipContent" transfer>
-        <span class="i-layout-header-trigger i-layout-header-trigger-min" @click="handleOpenLog">
+        <!-- <span class="i-layout-header-trigger i-layout-header-trigger-min" @click="handleOpenLog">
             <Badge :count="lengthError === 0 ? null : lengthError" :overflow-count="99" :dot="showDot" :offset="showDot ? [26, 2] : [20, 0]">
                 <Icon custom="i-icon i-icon-record" />
             </Badge>
-        </span>
+        </span> -->
     </Tooltip>
 </template>
 <script>
@@ -12,7 +12,7 @@
 
     export default {
         name: 'iHeaderLog',
-        computed: {
+        /* computed: {
             ...mapGetters('admin/log', [
                 'length',
                 'lengthError'
@@ -36,6 +36,6 @@
                     name: 'log'
                 });
             }
-        }
+        } */
     }
 </script>

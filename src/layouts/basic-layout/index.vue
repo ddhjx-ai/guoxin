@@ -42,9 +42,9 @@
         </Header>
       </transition>
       <Content class="i-layout-content" :class="contentClasses">
-        <transition name="fade-quick">
+        <!-- <transition name="fade-quick">
           <i-tabs v-if="tabs" v-show="showHeader" @on-reload="handleReload" />
-        </transition>
+        </transition> -->
         <div class="i-layout-content-main">
           <keep-alive :include="keepAlive">
             <router-view v-if="loadRouter" />
@@ -74,7 +74,7 @@ import iHeaderNotice from "./header-notice";
 import iHeaderUser from "./header-user";
 import iHeaderI18n from "./header-i18n";
 // import iHeaderSetting from "./header-setting";
-import iTabs from "./tabs";
+// import iTabs from "./tabs";
 // import iCopyright from '@/components/copyright';
 
 import { mapState, mapGetters, mapMutations } from "vuex";
@@ -99,7 +99,7 @@ export default {
     iHeaderFullscreen,
     // iHeaderSetting,
     iHeaderNotice,
-    iTabs
+    // iTabs
   },
   data() {
     return {

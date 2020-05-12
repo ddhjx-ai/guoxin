@@ -34,6 +34,36 @@ export default {
         closable: true,
       },
       component: () => import("@/pages/dashboard/subList"),
+    },
+    {
+      path: "blackList",
+      name: `${pre}blackList`,
+      meta: {
+        ...meta,
+        title: "BlackList",
+        closable: true,
+      },
+      component: () => import("@/pages/dashboard/blackList"),
+    },
+    {
+      path: "block",
+      name: `${pre}block`,
+      meta: {
+        ...meta,
+        title: "Block",
+        closable: true,
+      },
+      component: () => import("@/pages/dashboard/block"),
+    },
+    {
+      path: "cebAttachment",
+      name: `${pre}cebAttachment`,
+      meta: {
+        ...meta,
+        title: "CebAttachment",
+        closable: true,
+      },
+      component: () => import("@/pages/dashboard/cebAttachment"),
     }
   ],
 };

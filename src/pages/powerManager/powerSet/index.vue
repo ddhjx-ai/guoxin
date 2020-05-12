@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <Card :bordered="false" dis-hover class="ivu-mt"> -->
+    <Card :bordered="false" dis-hover class="ivu-mt">
     <Row :gutter="20">
       <Col :span="8">
         <Card :bordered="false" dis-hover class="ivu-mt" style="height:500px">
@@ -30,7 +30,7 @@
       </Col>
     </Row>
 
-    <!-- </Card> -->
+    </Card>
   </div>
 </template>
 

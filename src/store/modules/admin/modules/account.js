@@ -17,12 +17,13 @@ export default {
      * @param {Object} param password {String} 密码
      * @param {Object} param route {Object} 登录成功后定向的路由对象 任何 vue-router 支持的格式
      */
-    login({ dispatch }, { username = "", password = "" } = {}) {
+    login({ dispatch }, { user_name = "", user_pwd = "" } = {}) {
+      // console.log(username,password)
       return new Promise((resolve, reject) => {
         // 开始请求登录接口
         AccountLogin({
-          username,
-          password,
+          user_name,
+          user_pwd,
         })
           .then(async (res) => {
             // console.log(res)

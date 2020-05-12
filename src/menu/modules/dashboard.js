@@ -14,6 +14,18 @@ export default {
       path: `${pre}subList`,
       title: '子级列表',
       auth: ['hidden']
-    }
+    },
+    {
+      path: `${pre}blackList`,
+      title: 'BlackList'
+    },
+    {
+      path: `${pre}block`,
+      title: 'Block'
+    },
+    {
+      path: `${pre}cebAttachment`,
+      title: 'CebAttachment'
+    },
   ],
 };

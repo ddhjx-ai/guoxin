@@ -11,8 +11,8 @@
         <!-- <div class="page-account-top-desc">iView Admin Pro 企业级中台前端/设计解决方案</div> -->
       </div>
       <Login @on-submit="handleSubmit" style="">
-        <UserName name="username" value="admin" />
-        <Password name="password" value="admin" enter-to-submit />
+        <UserName name="user_name" value="admin_gxy" />
+        <Password name="user_pwd" value="guoxinyun_@,./123" enter-to-submit />
         <!-- <div class="page-account-auto-login">
           <Checkbox v-model="autoLogin" size="large">{{ $t('page.login.remember') }}</Checkbox>
           <a href>{{ $t('page.login.forgot') }}</a>
@@ -47,17 +47,17 @@ export default {
     };
   },
   methods: {
-    // ...mapActions("admin/account", ["login"]),
+    ...mapActions("admin/account", ["login"]),
     /**
      * @description 登录
      * 表单校验已有 iView Pro 自动完成，如有需要修改，请阅读 iView Pro 文档
      */
     handleSubmit(valid, values) {
       /* if (valid) {
-        const { username, password } = values;
+        const { user_name, user_pwd } = values;
         this.login({
-          username,
-          password
+          user_name,
+          user_pwd
         }).then(() => {
           // 重定向对象不存在则返回顶层路径
           this.$router.replace(this.$route.query.redirect || "/");

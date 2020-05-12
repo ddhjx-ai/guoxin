@@ -7,6 +7,7 @@
   </div>
 </template>
 <script>
+import sider from '@/menu/sider'
 import tableForm from "./table-form";
 import tableList from "./table-list";
 export default {
@@ -24,6 +25,7 @@ export default {
     },
   },
   mounted() {
+    console.log(JSON.stringify(sider))
   }
 };
 </script>
