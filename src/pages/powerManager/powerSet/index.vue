@@ -20,10 +20,10 @@
       <Col :span="16">
         <Card :bordered="false" dis-hover class="ivu-mt" style="height:500px">
           <h3 style="line-height:40px;padding-left:10px;background:#eee;">菜单列表</h3>
-          <el-tree :data="menuList" :default-expanded-keys="[1,2]" show-checkbox node-key="id" :props="defaultProps"></el-tree>
+          <el-tree :data="menuList" :default-expanded-keys="[1,2]" show-checkbox node-key="id" @check="handleCheck" @node-click="nodeClick" :props="defaultProps" ></el-tree>
           <Row :gutter="20" style="height:50px;line-height:50px;margin-top:50px">
             <Col :span="6" style="display:flex;justify-content: center;">
-              <Button type="success">确认</Button>
+              <Button type="success" @click="submit">确认</Button>
             </Col>
           </Row>
         </Card>
@@ -108,7 +108,16 @@ export default {
   methods: {
     cancelModal() {},
     handleSave() {},
-    changeModal() {}
+    changeModal() {},
+    nodeClick(data, node, currentNode) {
+      console.log(data, node, currentNode)
+    },
+    handleCheck(data,list){
+      console.log(data,list)
+    },
+    submit() {
+      // this.$router.push({name: '403'})
+    }
   }
 };
 </script>

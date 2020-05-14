@@ -1,11 +1,15 @@
-import request from "@/plugins/request";
+import axios from 'axios'
+import Qs from 'qs'
+import request from '@/plugins/request';
 
-export function AccountLogin(data) {
+// const baseURL = 'http://192.168.0.115:9000'
+export function Login(data) {
   return request({
-    url: "/login",
+    url: "/login/",
     method: "post",
-    data,
+    data: Qs.stringify(data)
   });
+  // return axios.create().post(baseURL+"/login/",Qs.stringify(data))
 }
 
 export function AccountRegister(data) {
@@ -19,7 +23,7 @@ export function AccountRegister(data) {
 // 获取当前用户菜单接口
 export function getMenuNav(data) {
   return request({
-    url: "/menu/nav",
+    url: "/menu/nav/",
     method: "get",
     data,
   });

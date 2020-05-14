@@ -174,7 +174,7 @@
 
 <script>
 export default {
-  name: "blackList",
+  name: "block",
   data() {
     return {
       columns: [

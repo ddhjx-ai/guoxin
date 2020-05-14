@@ -4,18 +4,23 @@
       <Form ref="form" :model="searchForm" :label-width="80" label-position="right">
         <Row :gutter="24" type="flex">
           <Col :span="8">
-            <FormItem label="名称：">
-              <Input v-model="searchForm.searchKey" placeholder="请输入" />
+            <FormItem label="用户名：">
+              <Input v-model="searchForm.user_name" placeholder="请输入" />
             </FormItem>
           </Col>
           <Col :span="8">
+            <FormItem label="手机号：">
+              <Input v-model="searchForm.phone" placeholder="请输入" />
+            </FormItem>
+          </Col>
+          <!-- <Col :span="8">
             <FormItem label="状态：">
               <Select v-model="searchForm.isuse" placeholder="请选择">
                 <Option :value="0">停用</Option>
                 <Option :value="1">启用</Option>
               </Select>
             </FormItem>
-          </Col>
+          </Col>-->
           <Col :span="8" class="ivu-text-right">
             <FormItem>
               <Button type="primary" @click="handleSubmit">查询</Button>
@@ -43,6 +48,7 @@
             <Badge v-if="row.isuse === 0" status="default" text="停用" />
             <Badge v-if="row.isuse === 1" status="processing" text="启用" />
           </template>
+          <template slot-scope="{ row }" slot="time">{{row.time | dataFormate}}</template>
           <template slot-scope="{ row,index }" slot="action">
             <a @click="handleUpdate(index)">编辑</a>
             <Divider type="vertical" />
@@ -117,7 +123,7 @@
 
     <!-- 分配角色 -->
     <Modal v-model="roleModal" width="500" @on-visible-change="roleModalChange" title="分配角色">
-      <Form>
+      <!-- <Form>
         <Row :gutter="20">
           <Col :span="12">
             <FormItem>
@@ -147,7 +153,14 @@
           :page-size="rolePageForm.pageSize"
           @on-change="rolePageChange"
         />
-      </div>
+      </div>-->
+      <Form>
+        <FormItem label="角色选择：">
+          <RadioGroup v-model="checkRole">
+            <Radio v-for="item in roleDataList" :key="item.id" :label="item.id">{{item.role_name}}</Radio>
+          </RadioGroup>
+        </FormItem>
+      </Form>
       <div slot="footer">
         <Button type="text" @click="cancelRoleModal">取消</Button>
         <Button type="primary" @click="handleRoleSave">确定</Button>
@@ -163,13 +176,14 @@ import {
   userSave,
   userUpdate,
   userAddRole,
-  getRoleList
+  getRoleList,
+  queryCondition
 } from "@/api/powerManager";
 export default {
   name: "userManager",
   data() {
     // 密码验证
-    var validatePassword = (rule, value, callback) => {
+    const validatePassword = (rule, value, callback) => {
       if (!value) {
         callback(new Error("请输入密码"));
       } else if (value.trim().length < 6 || value.trim().length > 16) {
@@ -179,11 +193,11 @@ export default {
       }
     };
     // 确认密码
-    var validatePass2 = (rule, value, callback) => {
-      if (!value) {
-        callback(new Error("请再次输入密码"));
+    const validatePassCheck = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("请输入确认密码"));
       } else if (value !== this.userFormData.user_pwd) {
-        callback(new Error("两次输入密码不一致!"));
+        callback(new Error("两次密码内容不一致!"));
       } else {
         callback();
       }
@@ -225,14 +239,16 @@ export default {
           { required: true, validator: validatePassword, trigger: "blur" }
         ],
         confirmPassword: [
-          { required: true, validator: validatePass2, trigger: "blur" }
+          { required: true, validator: validatePassCheck, trigger: "blur" }
         ]
       },
       userFormData: {
         user_name: "",
-        isuse: 1,
+        // isuse: 1,
+        name: "",
         phone: "",
-        user_pwd: ""
+        user_pwd: "",
+        confirmPassword: ""
       },
       roleModal: false,
       roleColumns: [
@@ -247,80 +263,7 @@ export default {
           minWidth: 100
         }
       ],
-      roleDataList: [
-        {
-          id: 1,
-          roleName: "管理员",
-          createDate: "2020-05-07 00:00:00",
-          remark: "AAA"
-        },
-        {
-          id: 2,
-          roleName: "会长",
-          createDate: "2020-05-07 00:00:00",
-          remark: "BBB"
-        },
-        {
-          id: 3,
-          roleName: "主管",
-          createDate: "2020-05-07 00:00:00",
-          remark: "cccc"
-        },
-        {
-          id: 4,
-          roleName: "管理员",
-          createDate: "2020-05-07 00:00:00",
-          remark: "AAA"
-        },
-        {
-          id: 5,
-          roleName: "会长",
-          createDate: "2020-05-07 00:00:00",
-          remark: "BBB"
-        },
-        {
-          id: 6,
-          roleName: "主管",
-          createDate: "2020-05-07 00:00:00",
-          remark: "cccc"
-        },
-        {
-          id: 7,
-          roleName: "管理员",
-          createDate: "2020-05-07 00:00:00",
-          remark: "AAA"
-        },
-        {
-          id: 8,
-          roleName: "会长",
-          createDate: "2020-05-07 00:00:00",
-          remark: "BBB"
-        },
-        {
-          id: 9,
-          roleName: "主管",
-          createDate: "2020-05-07 00:00:00",
-          remark: "cccc"
-        },
-        {
-          id: 10,
-          roleName: "管理员",
-          createDate: "2020-05-07 00:00:00",
-          remark: "AAA"
-        },
-        {
-          id: 11,
-          roleName: "会长",
-          createDate: "2020-05-07 00:00:00",
-          remark: "BBB"
-        },
-        {
-          id: 12,
-          roleName: "主管",
-          createDate: "2020-05-07 00:00:00",
-          remark: "cccc"
-        }
-      ],
+      roleDataList: [],
       searchForm: {
         searchKey: "",
         isuse: ""
@@ -347,8 +290,13 @@ export default {
           minWidth: 100
         },
         {
+          title: "真实姓名",
+          key: "name",
+          minWidth: 100
+        },
+        {
           title: "创建日期",
-          key: "createDate",
+          slot: "time",
           minWidth: 100
         },
         {
@@ -368,55 +316,78 @@ export default {
           minWidth: 140
         }
       ],
-      dataList: [
-        {
-          id: 1,
-          user_name: "admin",
-          createDate: "2020-05-07 00:00:00",
-          phone: 13000000001,
-          isuse: 1,
-          roleIdList: [1]
-        },
-        {
-          id: 2,
-          user_name: "master",
-          createDate: "2020-05-07 00:00:00",
-          phone: 13000000001,
-          isuse: 0,
-          roleIdList: [1, 2]
-        },
-        {
-          id: 3,
-          user_name: "user",
-          createDate: "2020-05-07 00:00:00",
-          phone: 13000000002,
-          isuse: 1,
-          roleIdList: [1, 2, 3]
-        }
-      ],
+      dataList: [],
       loading: false,
       isUpdate: false,
       selectIdList: [],
       currentIndex: -1,
-      selectRoleIdList: [] // 选中的角色id列表
+      selectRoleIdList: [], // 选中的角色id列表
+      checkRole: -1,
+      currentUserId: ""
     };
   },
   created() {
     this.getList();
+    this.getRoleData();
+  },
+  filters: {
+    dataFormate(msg) {
+      let time = new Date(msg);
+      let year = time.getFullYear();
+      let month = (time.getMonth() + 1).toString().padStart(2, "0");
+      let day = time
+        .getDay()
+        .toString()
+        .padStart(2, "0");
+      let HH = time
+        .getHours()
+        .toString()
+        .padStart(2, "0");
+      let MM = time
+        .getMinutes()
+        .toString()
+        .padStart(2, "0");
+      let SS = time
+        .getSeconds()
+        .toString()
+        .padStart(2, "0");
+
+      return `${year}-${month}-${day} ${HH}:${MM}:${SS}`;
+    }
   },
   methods: {
     // 获取用户列表
     getList() {
       getUserList({
-        ...this.searchForm,
-        ...this.pageForm
-      }).then(res => {});
+        pageSize: this.pageForm.pageSize,
+        pageNumber: this.pageForm.pageNumber
+      }).then(res => {
+        if (res.code == 200) {
+          this.dataList = res.data.data;
+          this.pageForm.total = res.data.total;
+        }
+      });
     },
     handleSubmit() {
       this.pageForm.pageNumber = 1;
+      queryCondition({
+        pageSize: this.pageForm.pageSize,
+        pageNumber: this.pageForm.pageNumber,
+        user_name: this.searchForm.user_name ? this.searchForm.user_name : '',
+        phone: this.searchForm.phone ? this.searchForm.phone : ''
+      }).then(res => {
+        if(res.code === 200){
+          this.dataList = res.data.data;
+          this.pageForm.total = res.data.total;
+        }
+      });
+    },
+    handleReset() {
+      this.searchForm.phone = "";
+      this.searchForm.user_name = "";
+      this.pageForm.pageNumber = 1;
       this.getList();
     },
-    handleReset() {},
     // 勾选列表项操作
     handleSelect(selection) {
       this.selectIdList = selection.map(item => {
@@ -445,10 +416,11 @@ export default {
         title: "提示",
         content: "<p>确认删除当前项?</p>",
         onOk: () => {
-          menuDelete({
-            userIds: this.selectIdList
+          userDelete({
+            userIds: this.selectIdList.toString() + ","
           }).then(res => {
             this.$Message.info("删除成功");
+            this.getList();
           });
         },
         onCancel: () => {
@@ -467,7 +439,9 @@ export default {
       this.userFormData = {
         user_name: data.user_name,
         isuse: data.isuse,
-        phone: data.phone
+        phone: data.phone,
+        name: data.name,
+        user_pwd: data.user_pwd
       };
       this.isUpdate = true;
       this.userModal = true;
@@ -479,11 +453,13 @@ export default {
     cancelModal() {},
     // 新增、编辑用户
     handleSave() {
-      console.log(this.userFormData);
       let data;
       if (!this.isUpdate) {
         data = {
-          ...this.userFormData
+          user_name: this.userFormData.user_name,
+          name: this.userFormData.name,
+          phone: this.userFormData.phone,
+          user_pwd: this.userFormData.user_pwd
         };
       } else {
         data = {
@@ -496,6 +472,7 @@ export default {
           if (!this.isUpdate) {
             userSave(data)
               .then(res => {
+                this.getList();
                 this.$Message.success("添加成功");
                 this.userModal = false;
               })
@@ -506,11 +483,14 @@ export default {
           } else {
             userUpdate(data)
               .then(res => {
-                this.$Message.success("添加成功");
-                this.userModal = false;
+                if (res.code == 200) {
+                  this.getList();
+                  this.$Message.success("编辑成功");
+                  this.userModal = false;
+                }
               })
               .catch(err => {
-                this.$Message.warning("添加失败");
+                this.$Message.warning(err.msg);
                 this.userModal = false;
               });
           }
@@ -520,7 +500,9 @@ export default {
     // 打开分配角色弹框
     partRole(row) {
       this.roleModal = true;
-      this.getRoleData();
+      this.currentUserId = row.id;
+      this.checkRole = parseInt(row.isAdmin);
+      console.log(row);
     },
     // 根据角色字段获取角色列表
     searchByRoleName() {
@@ -528,12 +510,10 @@ export default {
     },
     // 发送获取角色列表的请求
     getRoleData() {
-      getRoleList({
-        pageSize: this.rolePageForm.pageSize,
-        pageNumber: this.rolePageForm.pageNumber,
-        searchKey: this.searchRoleName
-      }).then(res => {
-        this.roleDataList = res.data.list;
+      getRoleList().then(res => {
+        if(res.code == 200){
+          this.roleDataList = res.data.data;
+        }
       });
     },
     roleSelect(selection) {
@@ -555,19 +535,32 @@ export default {
       });
       console.log(this.selectRoleIdList);
     },
-    roleModalChange() {},
+    roleModalChange(val) {
+      if (!val) {
+        this.checkRole = -1;
+      }
+    },
     roleSelectChange(row) {
       console.log(row);
     },
     // 关闭分配角色弹框
     cancelRoleModal() {
-      (this.searchRoleName = ""), (this.roleModal = false);
+      this.checkRole = -1;
+      this.roleModal = false;
     },
     // 调用分配角色接口
     handleRoleSave() {
-      if (this.selectRoleIdList.length === 0) {
+      if (this.checkRole == -1) {
         return this.$Message.warning("请选择角色");
       }
+      userAddRole({
+        userIds: this.currentUserId + ",",
+        roleId: this.checkRole
+      }).then(res => {
+        this.getList();
+        this.$Message.success("分配角色成功");
+        this.roleModal = false;
+      });
     },
     modalChange(val) {
       this.handleFormReset();

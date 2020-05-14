@@ -37,7 +37,8 @@
 import iCopyright from "@/components/copyright";
 import { mapActions } from "vuex";
 import mixins from "../mixins";
-
+import {AccountLogin} from '@/api/account';
+import qs from 'qs';
 export default {
   mixins: [mixins],
   components: { iCopyright },
@@ -63,6 +64,7 @@ export default {
           this.$router.replace(this.$route.query.redirect || "/");
         });
       } */
+      
       this.$router.push({
         name: 'dashboard-console'
       })

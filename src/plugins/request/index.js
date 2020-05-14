@@ -14,7 +14,7 @@ function errorCreate (msg) {
 
 // 记录和显示错误
 function errorLog (err) {
-    // 添加到日志
+    /* // 添加到日志
     store.dispatch('admin/log/push', {
         message: '数据请求异常',
         type: 'error',
@@ -39,13 +39,18 @@ function errorLog (err) {
             desc: err.message,
             duration: Setting.modalDuration
         });
-    }
+    } */
 }
 
 // 创建一个 axios 实例
 const service = axios.create({
-    baseURL: Setting.apiBaseURL,
-    timeout: 5000 // 请求超时时间
+    // baseURL: Setting.apiBaseURL,
+    // baseURL:process.env.VUE_APP_BASE_API,
+    baseURL:'/api',
+    /* headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }, */
+    timeout: 20000 // 请求超时时间
 });
 
 // 请求拦截器
@@ -54,12 +59,12 @@ service.interceptors.request.use(
         // 在请求发送之前做一些处理
         const token = util.cookies.get('token');
         // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
-        config.headers['X-Token'] = token;
+        // config.headers['X-Token'] = token;
         return config;
+
     },
     error => {
         // 发送失败
-        console.log(error);
         Promise.reject(error);
     }
 );
@@ -68,14 +73,14 @@ service.interceptors.request.use(
 service.interceptors.response.use(
     response => {
         // dataAxios 是 axios 返回数据中的 data
-        const dataAxios = response.data;
+        // const dataAxios = response.data;
         // 这个状态码是和后端约定的
-        const { code } = dataAxios;
+        // const { code } = dataAxios;
         // 根据 code 进行判断
-        if (code === undefined) {
+        if (response.data.code == 200) {
             // 如果没有 code 代表这不是项目后端开发的接口
-            return dataAxios;
-        } else {
+          return response.data
+        } /* else {
             // 有 code 代表这是一个后端接口 可以进行进一步的判断
             switch (code) {
             case 0:
@@ -90,8 +95,8 @@ service.interceptors.response.use(
                 errorCreate(`${dataAxios.msg}: ${response.config.url}`);
                 break;
             }
-        }
-    },
+        } */
+    }/* ,
     error => {
         if (error && error.response) {
             switch (error.response.status) {
@@ -111,7 +116,7 @@ service.interceptors.response.use(
         }
         errorLog(error);
         return Promise.reject(error);
-    }
+    } */
 );
 
 export default service;

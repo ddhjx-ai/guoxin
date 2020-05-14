@@ -77,45 +77,39 @@
       width="600px"
       @on-visible-change="modalChange"
     >
-      <Form ref="createForm" :model="blackFormData" :rules="blackRules" :label-width="150">
-        <FormItem label="alias: " prop="weekly">
-          <Input v-model="blackFormData.weekly" placeholder="请输入" />
+      <Form ref="createForm" :model="cebFormData" :rules="blackRules" :label-width="150">
+        <FormItem label="attachment_code: " prop="weekly">
+          <Input v-model="cebFormData.attachment_code" placeholder="请输入" />
         </FormItem>
-        <FormItem label="name: " prop="monthly">
-          <Input v-model="blackFormData.monthly" type="number" placeholder="请输入" />
+        <FormItem label="attachment_file_name: " prop="monthly">
+          <Input v-model="cebFormData.attachment_file_name" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="url: " prop="delayTime">
-          <Input v-model="blackFormData.delayTime" type="number" placeholder="请输入" />
+        <FormItem label="save_abs_path: " prop="delayTime">
+          <Input v-model="cebFormData.save_abs_path" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="query: " prop="ipNotAllow">
-          <Input v-model="blackFormData.ipNotAllow" type="number" placeholder="请输入" />
+        <FormItem label="file_type: " prop="ipNotAllow">
+          <Input v-model="cebFormData.file_type" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_query: " prop="isAllow">
-          <Input v-model="blackFormData.isAllow" type="number" placeholder="请输入" />
+        <FormItem label="data_timestamp: " prop="isAllow">
+          <Input v-model="cebFormData.data_timestamp" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_table_name: " prop="ipCount">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="md5: " prop="ipCount">
+          <Input v-model="cebFormData.md5" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_table_name2: " prop="isPic">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="notice_id: " prop="isPic">
+          <Input v-model="cebFormData.notice_id" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_area: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="member_id: " prop="allowCopy">
+          <Input v-model="cebFormData.member_id" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_cate: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="is_deleted: " prop="allowCopy">
+          <Input v-model="cebFormData.is_deleted" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_calssaid: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="create_time: " prop="allowCopy">
+          <Input v-model="cebFormData.create_time" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="is_show_description: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
-        </FormItem>
-        <FormItem label="is_show_total: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
-        </FormItem>
-        <FormItem label="rp: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="last_modified_time: " prop="allowCopy">
+          <Input v-model="cebFormData.last_modified_time" type="number" placeholder="请输入" />
         </FormItem>
       </Form>
       <div slot="footer">
@@ -125,46 +119,56 @@
     </Modal>
 
     <!-- 详情弹出框 -->
-    <Modal v-model="blackDetailModal" title="详情" width="600px">
-      <Form :model="blackDetail" :label-width="120">
-        <FormItem label="每天条数：">
-          <!-- <Input v-model="blackDetail.daily" placeholder="请输入" /> -->
-          {{blackDetail.daily}}
+    <Modal v-model="DetailModal" title="详情" width="600px">
+      <Form :model="cebFormData" :label-width="120">
+        <FormItem label="attachment_code: " prop="weekly">
+          <!-- <Input v-model="cebFormData.weekly" placeholder="请输入" /> -->
+          {{cebFormData.attachment_code}}
         </FormItem>
-        <FormItem label="每周条数：">
-          <!-- <Input v-model="blackDetail.weekly" placeholder="请输入" /> -->
-          {{blackDetail.weekly}}
+        <FormItem label="attachment_file_name: " prop="monthly">
+          <!-- <Input v-model="cebFormData.monthly" type="number" placeholder="请输入" /> -->
+          {{cebFormData.attachment_file_name}}
         </FormItem>
-        <FormItem label="每月条数：">
-          <!-- <Input v-model="blackDetail.monthly" type="number" placeholder="请输入" /> -->
-          {{blackDetail.monthly}}
+        <FormItem label="save_abs_path: " prop="delayTime">
+          <!-- <Input v-model="cebFormData.delayTime" type="number" placeholder="请输入" /> -->
+          {{cebFormData.save_abs_path}}
         </FormItem>
-        <FormItem label="延时时间：">
-          <!-- <Input v-model="blackDetail.delayTime" type="number" placeholder="请输入" /> -->
-          {{blackDetail.delayTime}}
+        <FormItem label="file_type: " prop="ipNotAllow">
+          <!-- <Input v-model="cebFormData.ipNotAllow" type="number" placeholder="请输入" /> -->
+          {{cebFormData.file_type}}
         </FormItem>
-        <FormItem label="允许登录个数：">
-          <!-- <Input v-model="blackDetail.ipCount" type="number" placeholder="请输入" /> -->
-          {{blackDetail.ipCount}}
+        <FormItem label="data_timestamp: " prop="isAllow">
+          <!-- <Input v-model="cebFormData.isAllow" type="number" placeholder="请输入" /> -->
+          {{cebFormData.data_timestamp}}
         </FormItem>
-        <FormItem label="信息转成图片：">
-          <!-- <Radio-group :model.sync="blackDetail.isPic">
-            <Radio value="true">是</Radio>
-            <Radio value="false">否</Radio>
-          </Radio-group>-->
-          {{blackDetail.isPic ? '是' : '否'}}
+        <FormItem label="md5: " prop="ipCount">
+          <!-- <Input v-model="cebFormData.ipCount" type="number" placeholder="请输入" /> -->
+          {{cebFormData.md5}}
         </FormItem>
-        <FormItem label="允许复制：">
-          <!-- <Radio-group :model.sync="blackFormData.allowCopy">
-            <Radio value="true">是</Radio>
-            <Radio value="false">否</Radio>
-          </Radio-group>-->
-          {{blackDetail.allowCopy ? '是' : '否'}}
+        <FormItem label="notice_id: " prop="isPic">
+          <!-- <Input v-model="cebFormData.ipCount" type="number" placeholder="请输入" /> -->
+          {{cebFormData.notice_id}}
+        </FormItem>
+        <FormItem label="member_id: " prop="allowCopy">
+          <!-- <Input v-model="cebFormData.ipCount" type="number" placeholder="请输入" /> -->
+          {{cebFormData.member_id}}
+        </FormItem>
+        <FormItem label="is_deleted: " prop="allowCopy">
+          <!-- <Input v-model="cebFormData.ipCount" type="number" placeholder="请输入" /> -->
+          {{cebFormData.is_deleted}}
+        </FormItem>
+        <FormItem label="create_time: " prop="allowCopy">
+          <!-- <Input v-model="cebFormData.ipCount" type="number" placeholder="请输入" /> -->
+          {{cebFormData.create_time}}
+        </FormItem>
+        <FormItem label="last_modified_time: " prop="allowCopy">
+          <!-- <Input v-model="cebFormData.ipCount" type="number" placeholder="请输入" /> -->
+          {{cebFormData.last_modified_time}}
         </FormItem>
       </Form>
       <div slot="footer">
         <!-- <Button type="text" @click="blackListModal = false">取消</Button> -->
-        <Button type="primary" @click="blackDetailModal = false">确定</Button>
+        <Button type="primary" @click="DetailModal = false">确定</Button>
       </div>
     </Modal>
   </div>
@@ -172,7 +176,7 @@
 
 <script>
 export default {
-  name: "blackList",
+  name: "cebAttachment",
   data() {
     return {
       columns: [
@@ -232,23 +236,13 @@ export default {
           minWidth: 100
         },
         {
-          title: "sphinx_calssaid",
-          key: "sphinx_calssaid",
+          title: "create_time",
+          key: "create_time",
           minWidth: 100
         },
         {
-          title: "is_show_description",
-          key: "is_show_description",
-          minWidth: 100
-        },
-        {
-          title: "is_show_total",
-          key: "is_show_total",
-          minWidth: 100
-        },
-        {
-          title: "rp",
-          key: "rp",
+          title: "last_modified_time",
+          key: "last_modified_time",
           minWidth: 100
         },
         {
@@ -261,17 +255,17 @@ export default {
       dataList: [
         {
           id: 11,
-          attachment_code: 'admin',
-          attachment_file_name: 200,
-          save_abs_path: 300,
-          file_type: 1,
-          data_timestamp: "202.118.118.1",
-          md5: "202.118.118.2",
-          notice_id: 11,
-          member_id: 1,
-          is_deleted: 1,
-          create_time: 1,
-          last_modified_time: 1
+          attachment_code: '',
+          attachment_file_name: '',
+          save_abs_path: '',
+          file_type: '',
+          data_timestamp: "",
+          md5: "",
+          notice_id: '',
+          member_id: '',
+          is_deleted: '',
+          create_time: '',
+          last_modified_time: ''
         }
       ],
       loading: false,
@@ -283,7 +277,7 @@ export default {
       searchForm: {},
       blackListModal: false,
       isUpdate: false,
-      blackFormData: {
+      cebFormData: {
         daily: "",
         weekly: "",
         monthly: "",
@@ -297,7 +291,7 @@ export default {
       },
       blackRules: {},
       // 详情
-      blackDetailModal: false,
+      DetailModal: false,
       blackDetail: {}
     };
   },
@@ -315,11 +309,11 @@ export default {
     handleUpdate(index) {
       this.blackListModal = true;
       this.isUpdate = true;
-      this.blackFormData = { ...this.dataList[index] };
+      this.cebFormData = { ...this.dataList[index] };
     },
     handleDetail(index) {
       this.blackDetail = { ...this.dataList[index] };
-      this.blackDetailModal = true;
+      this.DetailModal = true;
     },
     handleSubmit() {},
     handleReset() {},

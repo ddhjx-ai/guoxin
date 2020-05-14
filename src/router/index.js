@@ -1,23 +1,23 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import iView from 'view-design';
+import Vue from "vue";
+import VueRouter from "vue-router";
+import iView from "view-design";
 
-import util from '@/libs/util'
+import util from "@/libs/util";
 
-import Setting from '@/setting';
+import Setting from "@/setting";
 
-import store from '@/store/index';
+import store from "@/store/index";
 
 // 路由数据
-import routes from './routes';
+import routes from "./routes";
 
 Vue.use(VueRouter);
 
 // 导出路由 在 main.js 里使用
 const router = new VueRouter({
-    routes,
-    mode: Setting.routerMode,
-    base: Setting.routerBase
+  routes,
+  mode: Setting.routerMode,
+  base: Setting.routerBase,
 });
 
 /**
@@ -25,8 +25,8 @@ const router = new VueRouter({
  * 权限验证
  */
 
-/* router.beforeEach((to, from, next) => {
-    if (Setting.showProgressBar) iView.LoadingBar.start();
+router.beforeEach((to, from, next) => {
+  /* if (Setting.showProgressBar) iView.LoadingBar.start();
     // 判断是否需要登录才可以进入
     if (to.matched.some(_ => _.meta.auth)) {
         // 这里依据 token 判断是否登录，可视情况修改
@@ -47,10 +47,22 @@ const router = new VueRouter({
     } else {
         // 不需要身份校验 直接通过
         next();
-    }
+    } */
+  next()
+  /* const token = util.cookies.get("token");
+  console.log(token)
+  if (token && token !== "undefined") {
+    next();
+  } else {
+    // 没有登录的时候跳转到登录界面
+    // 携带上登陆成功之后需要跳转的页面完整路径
+    next({
+      name: "login"
+    });
+  } */
 });
 
-router.afterEach(to => {
+/* router.afterEach(to => {
     if (Setting.showProgressBar) iView.LoadingBar.finish();
     // 多页控制 打开新的页面
     store.dispatch('admin/page/open', to);

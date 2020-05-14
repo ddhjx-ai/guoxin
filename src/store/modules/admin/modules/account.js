@@ -3,7 +3,7 @@
  * */
 import util from "@/libs/util";
 import router from "@/router";
-import { AccountLogin, AccountRegister } from "@api/account";
+import { Login, AccountRegister } from "@api/account";
 
 import { Modal } from "view-design";
 
@@ -21,7 +21,7 @@ export default {
       // console.log(username,password)
       return new Promise((resolve, reject) => {
         // 开始请求登录接口
-        AccountLogin({
+        Login({
           user_name,
           user_pwd,
         })
@@ -35,12 +35,15 @@ export default {
             // 如果你的 token 不是通过 cookie 携带，而是普通字段，也可视情况存储在 localStorage
             // util.cookies.set("uuid", res.uuid);
             // util.cookies.set("token", res.token);
-            util.cookies.set("token", 'aaaaa');
-            // res.info.access = ['aaaa','111']
+            // util.cookies.set("token", 'aaaaa');
+            // res.info.access = ['aaaa']
             // 设置 vuex 用户信息
-            await dispatch("admin/user/set", res.info, { root: true });
+            let info = {
+              access: ['user']
+            }
+            await dispatch("admin/user/set", info, { root: true });
             // 用户登录后从持久化数据加载一系列的设置
-            await dispatch("load");
+            // await dispatch("load");
             // 结束
             resolve();
           })

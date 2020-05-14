@@ -48,8 +48,8 @@
       </div>
     </Card>
 
-    <Modal v-model="roleModal" :title="isUpdate ? '编辑角色' : '新建角色'" :loading="roleModalLoading">
-      <Form ref="create" :model="roleFormData" :rules="roleRules" :label-width="100">
+    <Modal v-model="roleModal" :title="isUpdate ? '编辑角色' : '新建角色'" :loading="roleModalLoading"  @on-visible-change="modalChange">
+      <Form ref="createForm" :model="roleFormData" :rules="roleRules" :label-width="100">
         <FormItem label="角色名：" prop="roleName">
           <Input v-model="roleFormData.roleName" placeholder="请输入" />
         </FormItem>
@@ -58,7 +58,7 @@
         </FormItem>
       </Form>
       <div slot="footer">
-        <Button type="text" @click="cancelModal">取消</Button>
+        <Button type="text" @click="roleModal = false">取消</Button>
         <Button type="primary" @click="handleSave">确定</Button>
       </div>
     </Modal>
@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import {getRoleList,roleDelete,roleSave,roleUpdate} from '@/api/powerManager'
 export default {
   name: "roleManager",
   data() {
@@ -73,8 +74,13 @@ export default {
       isUpdate: false,
       roleModal: false,
       roleModalLoading: false,
-      roleRules: {},
-      roleFormData: {},
+      roleRules: {
+        roleName: [{ required: true, message: "请输入角色名称", trigger: "blur" }]
+      },
+      roleFormData: {
+        roleName:'',
+        remark: ''
+      },
       searchForm: {
         total: 0,
         pageNumber: 10,
@@ -131,29 +137,121 @@ export default {
           remark: "cccc"
         }
       ],
-      loading: false
+      loading: false,
+      currentIndex: -1,
+      selectIdList: []
     };
   },
+  created() {
+    this.getList()
+  },
   methods: {
-    handleSubmit() {},
+    getList() {
+      getRoleList({
+        pageSize: this.pageForm.pageSize,
+        pageNumber: this.pageForm.pageNumber
+      }).then(res => {
+        // this.dataList = res.data.data;
+      });
+    },
+    handleSubmit() {
+      this.pageForm.pageNumber = 1
+      queryCondition({
+        pageSize: this.pageForm.pageSize,
+        pageNumber: this.pageForm.pageNumber,
+        roleName: this.searchForm.roleName
+      }).then(res => {
+
+      })
+    },
     handleReset() {},
-    handleSelect() {},
-    handleSelectCancel() {},
-    handleSelectAll() {},
-    handleSelectAllCancel() {},
+    // 勾选列表项操作
+    handleSelect(selection) {
+      this.selectIdList = selection.map(item => {
+        return item.id;
+      });
+    },
+    handleSelectCancel(selection) {
+      this.selectIdList = selection.map(item => {
+        return item.id;
+      });
+    },
+    handleSelectAll(selection) {
+      this.selectIdList = selection.map(item => {
+        return item.id;
+      });
+    },
+    handleSelectAllCancel(selection) {
+      this.selectIdList = [];
+    },
     pageChange() {},
     handleUpdate(index) {
+      this.currentIndex = index
       this.roleFormData = this.dataList[index];
       this.isUpdate = true;
       this.roleModal = true;
     },
     handleDetail() {},
+    // 打开新建角色弹框
     handleOpenCreate() {
+      this.isUpdate = false
       this.roleModal = true;
     },
-    handleRemoveAll() {},
+    // 批量删除
+    handleRemoveAll() {
+      if (this.selectIdList.length === 0) {
+        return this.$Message.warning("请选择删除项");
+      }
+      this.$Modal.confirm({
+        title: "提示",
+        content: "<p>确认删除当前项?</p>",
+        onOk: () => {
+          roleDelete({
+            userIds: this.selectIdList.toString() + ','
+          }).then(res => {
+            this.$Message.info("删除成功");
+            this.getList()
+          });
+        },
+        onCancel: () => {
+          this.$Message.info("取消删除");
+        }
+      });
+    },
     cancelModal() {},
-    handleSave() {}
+    handleSave() {
+      let data;
+      if (!this.isUpdate) {
+        data = {
+          roleName: this.roleFormData.roleName,
+          remark: this.roleFormData.remark
+        };
+      } else {
+        data = {
+          id: this.dataList[this.currentIndex].id,
+          roleName: this.roleFormData.roleName,
+          remark: this.roleFormData.remark
+        };
+      }
+      this.$refs.createForm.validate(valid => {
+        if(valid){
+          if(!this.isUpdate){
+            roleSave(data).then(res => {
+
+            })
+          }else{
+            roleUpdate(data).then(res => {
+
+            }) 
+          }
+        }else{
+
+        }
+      })
+    },
+    modalChange() {
+      this.$refs.createForm.resetFields();
+    }
   }
 };
 </script>

@@ -7,9 +7,10 @@
   </div>
 </template>
 <script>
-import sider from '@/menu/sider'
+import sider from "@/menu/sider";
 import tableForm from "./table-form";
 import tableList from "./table-list";
+
 export default {
   name: "dashboard-console",
   components: { tableForm, tableList },
@@ -22,10 +23,13 @@ export default {
     },
     getData() {
       this.$refs.table.resGetData();
-    },
+    }
   },
   mounted() {
-    console.log(JSON.stringify(sider))
+    // console.log(sider);
+  },
+  created() {
+    //  sider.length = 1;
   }
 };
 </script>

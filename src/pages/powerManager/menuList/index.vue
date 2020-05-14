@@ -30,7 +30,7 @@
       </div>
     </Card>
 
-    <Modal v-model="menuModal" title="新建菜单" @on-visible-change="modalChange">
+    <Modal v-model="menuModal" title="编辑菜单" @on-visible-change="modalChange">
       <Form ref="create" :model="menuFormData" :rules="menuRules" :label-width="100">
         <FormItem label="菜单名称：" prop="menu_name">
           <Input v-model="menuFormData.menu_name" placeholder="请输入" />

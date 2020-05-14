@@ -12,7 +12,7 @@
 
     export default {
         name: 'iHeaderLog',
-        /* computed: {
+        computed: {
             ...mapGetters('admin/log', [
                 'length',
                 'lengthError'
@@ -36,6 +36,6 @@
                     name: 'log'
                 });
             }
-        } */
+        }
     }
 </script>

@@ -15,17 +15,30 @@ module.exports = {
   runtimeCompiler: true,
   productionSourceMap: false,
   devServer: {
-    publicPath: Setting.publicPath/* ,
+    publicPath: Setting.publicPath,
+    port: '9000',
     proxy: {
       "/api": {
-        target: "http://www.web-jshtml.cn/productapi/token",
+        target: "http://192.168.0.116:9000",
         ws: true,
         changeOrigin: true,
         pathRewrite: {
           "^/api": "",
         },
       },
-    }, */
+    },
+    /* proxy: {
+      // 设置代理
+      [process.env.VUE_APP_BASE_API]: {
+        target: `http://192.168.0.115:9000`, // 测试
+        // target: `http://www.web-jshtml.cn/productapi/token`, // 测试
+        changeOrigin: true,
+        ws: true,
+        pathRewrite: {
+          ["^" + process.env.VUE_APP_BASE_API]: ""
+        }
+      }
+    } */
   },
   css: {
     loaderOptions: {
