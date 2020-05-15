@@ -34,7 +34,7 @@ export default {
             // 如有必要 token 需要定时更新，默认保存一天，可在 setting.js 中修改
             // 如果你的 token 不是通过 cookie 携带，而是普通字段，也可视情况存储在 localStorage
             // util.cookies.set("uuid", res.uuid);
-            // util.cookies.set("token", res.token);
+            util.cookies.set("token", res.token);
             // util.cookies.set("token", 'aaaaa');
             // res.info.access = ['aaaa']
             // 设置 vuex 用户信息

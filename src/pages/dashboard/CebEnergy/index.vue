@@ -19,7 +19,7 @@
               <Option value="true">是</Option>
             </Select>
           </FormItem>
-        </Col> -->
+        </Col>-->
         <Col :span="8" class="ivu-text-right">
           <FormItem>
             <Button type="primary" @click="handleSubmit">查询</Button>
@@ -78,38 +78,74 @@
       @on-visible-change="modalChange"
     >
       <Form ref="createForm" :model="cebFormData" :rules="blackRules" :label-width="150">
-        <FormItem label="bidder_code_type: " prop="bidder_code_type">
-          <Input v-model="cebFormData.bidder_code_type" placeholder="请输入" />
+        <FormItem label="name: " prop="bidder_code_type">
+          <Input v-model="cebFormData.name" placeholder="请输入" />
         </FormItem>
-        <FormItem label="bidder_code: " prop="bidder_code">
-          <Input v-model="cebFormData.bidder_code" type="number" placeholder="请输入" />
+        <FormItem label="org_code: " prop="bidder_code">
+          <Input v-model="cebFormData.org_code" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="bidder_name: " prop="bidder_name">
-          <Input v-model="cebFormData.bidder_name" type="number" placeholder="请输入" />
+        <FormItem label="regCode: " prop="bidder_name">
+          <Input v-model="cebFormData.regCode" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="is_unions: " prop="is_unions">
-          <Input v-model="cebFormData.is_unions" type="number" placeholder="请输入" />
+        <FormItem label="taxCode: " prop="is_unions">
+          <Input v-model="cebFormData.taxCode" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="union_code: " prop="isAllow">
-          <Input v-model="cebFormData.union_code" type="number" placeholder="请输入" />
+        <FormItem label="legal_person: " prop="isAllow">
+          <Input v-model="cebFormData.legal_person" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="union_name: " prop="ipCount">
-          <Input v-model="cebFormData.union_name" type="number" placeholder="请输入" />
+        <FormItem label="regist_time: " prop="ipCount">
+          <Input v-model="cebFormData.regist_time" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="price_type: " prop="isPic">
-          <Input v-model="cebFormData.price_type" type="number" placeholder="请输入" />
+        <FormItem label="is_agency: " prop="isPic">
+          <Input v-model="cebFormData.is_agency" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="bid_price: " prop="allowCopy">
-          <Input v-model="cebFormData.bid_price" type="number" placeholder="请输入" />
+        <FormItem label="admin_realname: " prop="allowCopy">
+          <Input v-model="cebFormData.admin_realname" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="bid_proce_currency_code: " prop="allowCopy">
-          <Input v-model="cebFormData.bid_proce_currency_code" type="number" placeholder="请输入" />
+        <FormItem label="mobile_phone: " prop="allowCopy">
+          <Input v-model="cebFormData.mobile_phone" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="rate: " prop="allowCopy">
-          <Input v-model="cebFormData.rate" type="number" placeholder="请输入" />
+        <FormItem label="mail: " prop="allowCopy">
+          <Input v-model="cebFormData.mail" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="other_bid_price: " prop="allowCopy">
-          <Input v-model="cebFormData.other_bid_price" type="number" placeholder="请输入" />
+        <FormItem label="id_card_num: " prop="allowCopy">
+          <Input v-model="cebFormData.id_card_num" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="legal_person_auth: " prop="bidder_code_type">
+          <Input v-model="cebFormData.legal_person_auth" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="approve_result: " prop="bidder_code">
+          <Input v-model="cebFormData.approve_result" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="approve_person: " prop="bidder_name">
+          <Input v-model="cebFormData.approve_person" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="approve_time: " prop="is_unions">
+          <Input v-model="cebFormData.approve_time" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="member_id: " prop="isAllow">
+          <Input v-model="cebFormData.member_id" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="status: " prop="ipCount">
+          <Input v-model="cebFormData.status" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="create_time: " prop="isPic">
+          <Input v-model="cebFormData.create_time" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="last_modified_time: " prop="allowCopy">
+          <Input v-model="cebFormData.last_modified_time" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="certifycate_auth: " prop="allowCopy">
+          <Input v-model="cebFormData.certifycate_auth" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="certifycate_auth_name: " prop="allowCopy">
+          <Input v-model="cebFormData.certifycate_auth_name" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="electronic_seal: " prop="allowCopy">
+          <Input v-model="cebFormData.electronic_seal" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="electronic_seal_name: " prop="allowCopy">
+          <Input v-model="cebFormData.electronic_seal_name" type="number" placeholder="请输入" />
         </FormItem>
       </Form>
       <div slot="footer">
@@ -191,58 +227,168 @@ export default {
           minWidth: 100
         },
         {
-          title: "bidder_code_type",
-          key: "bidder_code_type",
+          title: "serialVersionUID",
+          key: "serialVersionUID",
           minWidth: 100
         },
         {
-          title: "bidder_code",
-          key: "bidder_code",
+          title: "name",
+          key: "name",
           minWidth: 100
         },
         {
-          title: "bidder_name",
-          key: "bidder_name",
+          title: "org_code",
+          key: "org_code",
           minWidth: 100
         },
         {
-          title: "is_unions",
-          key: "is_unions",
+          title: "regCode",
+          key: "regCode",
           minWidth: 100
         },
         {
-          title: "union_code",
-          key: "union_code",
+          title: "taxCode",
+          key: "taxCode",
           minWidth: 100
         },
         {
-          title: "union_name",
-          key: "union_name",
+          title: "legal_person",
+          key: "legal_person",
           minWidth: 100
         },
         {
-          title: "price_type",
-          key: "price_type",
+          title: "regist_time",
+          key: "regist_time",
           minWidth: 120
         },
         {
-          title: "bid_price",
-          key: "bid_price",
+          title: "is_agency",
+          key: "is_agency",
           minWidth: 100
         },
         {
-          title: "bid_proce_currency_code",
-          key: "bid_proce_currency_code",
+          title: "admin_realname",
+          key: "admin_realname",
           minWidth: 100
         },
         {
-          title: "rate",
-          key: "rate",
+          title: "mobile_phone",
+          key: "mobile_phone",
           minWidth: 100
         },
         {
-          title: "other_bid_price",
-          key: "other_bid_price",
+          title: "mail",
+          key: "mail",
+          minWidth: 100
+        },
+        {
+          title: "id_card_num",
+          key: "id_card_num",
+          minWidth: 100
+        },
+        {
+          title: "legal_person_auth",
+          key: "legal_person_auth",
+          minWidth: 100
+        },
+        {
+          title: "approve_result",
+          key: "approve_result",
+          minWidth: 100
+        },
+        {
+          title: "approve_person",
+          key: "approve_person",
+          minWidth: 100
+        },
+        {
+          title: "approve_time",
+          key: "approve_time",
+          minWidth: 100
+        },
+        {
+          title: "member_id",
+          key: "member_id",
+          minWidth: 100
+        },
+        {
+          title: "status",
+          key: "status",
+          minWidth: 120
+        },
+        {
+          title: "create_time",
+          key: "create_time",
+          minWidth: 100
+        },
+        {
+          title: "last_modified_time",
+          key: "last_modified_time",
+          minWidth: 100
+        },
+        {
+          title: "certifycate_auth",
+          key: "certifycate_auth",
+          minWidth: 100
+        },
+        {
+          title: "certifycate_auth_name",
+          key: "certifycate_auth_name",
+          minWidth: 100
+        },
+        {
+          title: "electronic_seal",
+          key: "electronic_seal",
+          minWidth: 100
+        },
+        {
+          title: "electronic_seal_name",
+          key: "electronic_seal_name",
+          minWidth: 100
+        },
+        {
+          title: "business_license",
+          key: "business_license",
+          minWidth: 100
+        },
+        {
+          title: "business_license_name",
+          key: "business_license_name",
+          minWidth: 100
+        },
+        {
+          title: "account",
+          key: "account",
+          minWidth: 100
+        },
+        {
+          title: "province",
+          key: "province",
+          minWidth: 120
+        },
+        {
+          title: "city",
+          key: "city",
+          minWidth: 100
+        },
+        {
+          title: "address",
+          key: "address",
+          minWidth: 100
+        },
+        {
+          title: "reject_reason",
+          key: "reject_reason",
+          minWidth: 100
+        },
+        {
+          title: "chapter",
+          key: "chapter",
+          minWidth: 100
+        },
+        {
+          title: "sign",
+          key: "sign",
           minWidth: 100
         },
         {
@@ -254,18 +400,40 @@ export default {
       ],
       dataList: [
         {
-          id: 11,
-          bidder_code_type: 'admin',
-          bidder_code: 200,
-          bidder_name: 300,
-          is_unions: 1,
-          union_code: "202.118.118.1",
-          union_name: "202.118.118.2",
-          price_type: 11,
-          bid_price: 1,
-          bid_proce_currency_code: 1,
-          rate: 1,
-          other_bid_price: 1
+          serialVersionUID: 11, // Number
+          id: 22, // Number
+          name: "", // String
+          org_code: "", // String
+          regCode: "", // Number
+          taxCode: "", // Number
+          legal_person: "", // String
+          regist_time: "", // String
+          is_agency: "", // String
+          admin_realname: "", // String
+          mobile_phone: "", // String
+          mail: "", // String
+          id_card_num: "", // String
+          legal_person_auth: "", // String
+          approve_result: "", // String
+          approve_person: "", // String
+          approve_time: "", // String
+          member_id: "", // String
+          status: "", // String
+          create_time: "", // String
+          last_modified_time: "", // String
+          certifycate_auth: "", // String
+          certifycate_auth_name: "", // String
+          electronic_seal: "", // String
+          electronic_seal_name: "", // String
+          business_license: "", // String
+          business_license_name: "", // String
+          account: "", // String
+          province: "", // String
+          city: "", // String
+          address: "", // String
+          reject_reason: "", // String
+          chapter: "", // String
+          sign: "" // String
         }
       ],
       loading: false,
@@ -278,17 +446,39 @@ export default {
       blackListModal: false,
       isUpdate: false,
       cebFormData: {
-        bidder_code_type: "",
-        bidder_code: "",
-        bidder_name: "",
-        is_unions: "",
-        union_code: "",
-        union_name: "",
-        price_type: "",
-        bid_price: "",
-        bid_proce_currency_code: "",
-        rate: "",
-        other_bid_price: ""
+        serialVersionUID: 11, // Number
+        name: "", // String
+        org_code: "", // String
+        regCode: "", // Number
+        taxCode: "", // Number
+        legal_person: "", // String
+        regist_time: "", // String
+        is_agency: "", // String
+        admin_realname: "", // String
+        mobile_phone: "", // String
+        mail: "", // String
+        id_card_num: "", // String
+        legal_person_auth: "", // String
+        approve_result: "", // String
+        approve_person: "", // String
+        approve_time: "", // String
+        member_id: "", // String
+        status: "", // String
+        create_time: "", // String
+        last_modified_time: "", // String
+        certifycate_auth: "", // String
+        certifycate_auth_name: "", // String
+        electronic_seal: "", // String
+        electronic_seal_name: "", // String
+        business_license: "", // String
+        business_license_name: "", // String
+        account: "", // String
+        province: "", // String
+        city: "", // String
+        address: "", // String
+        reject_reason: "", // String
+        chapter: "", // String
+        sign: "" // String
       },
       blackRules: {},
       // 详情
@@ -319,7 +509,7 @@ export default {
     handleSubmit() {},
     handleReset() {},
     modalChange() {
-      this.$refs.createForm.resetFields()
+      this.$refs.createForm.resetFields();
     },
     handleSave() {}
   }

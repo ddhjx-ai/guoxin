@@ -78,38 +78,47 @@
       @on-visible-change="modalChange"
     >
       <Form ref="createForm" :model="cebFormData" :rules="blackRules" :label-width="150">
-        <FormItem label="bidder_code_type: " prop="bidder_code_type">
-          <Input v-model="cebFormData.bidder_code_type" placeholder="请输入" />
+        <FormItem label="industryType: " prop="bidder_code_type">
+          <Input v-model="cebFormData.industryType" placeholder="请输入" />
         </FormItem>
-        <FormItem label="bidder_code: " prop="bidder_code">
-          <Input v-model="cebFormData.bidder_code" type="number" placeholder="请输入" />
+        <FormItem label="cebTenderProject: " prop="bidder_code">
+          <Input v-model="cebFormData.cebTenderProject" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="bidder_name: " prop="bidder_name">
-          <Input v-model="cebFormData.bidder_name" type="number" placeholder="请输入" />
+        <FormItem label="bid_section_name: " prop="bidder_name">
+          <Input v-model="cebFormData.bid_section_name" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="is_unions: " prop="is_unions">
-          <Input v-model="cebFormData.is_unions" type="number" placeholder="请输入" />
+        <FormItem label="bid_section_code: " prop="is_unions">
+          <Input v-model="cebFormData.bid_section_code" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="union_code: " prop="isAllow">
-          <Input v-model="cebFormData.union_code" type="number" placeholder="请输入" />
+        <FormItem label="bid_section_content: " prop="isAllow">
+          <Input v-model="cebFormData.bid_section_content" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="union_name: " prop="ipCount">
-          <Input v-model="cebFormData.union_name" type="number" placeholder="请输入" />
+        <FormItem label="contract_reckon_price: " prop="ipCount">
+          <Input v-model="cebFormData.contract_reckon_price" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="price_type: " prop="isPic">
-          <Input v-model="cebFormData.price_type" type="number" placeholder="请输入" />
+        <FormItem label="currency_code: " prop="isPic">
+          <Input v-model="cebFormData.currency_code" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="bid_price: " prop="allowCopy">
-          <Input v-model="cebFormData.bid_price" type="number" placeholder="请输入" />
+        <FormItem label="bidding_eligibility: " prop="allowCopy">
+          <Input v-model="cebFormData.bidding_eligibility" type="number" placeholder="请输入" />
         </FormItem>
         <FormItem label="bid_proce_currency_code: " prop="allowCopy">
           <Input v-model="cebFormData.bid_proce_currency_code" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="rate: " prop="allowCopy">
-          <Input v-model="cebFormData.rate" type="number" placeholder="请输入" />
+        <FormItem label="member_id: " prop="allowCopy">
+          <Input v-model="cebFormData.member_id" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="other_bid_price: " prop="allowCopy">
-          <Input v-model="cebFormData.other_bid_price" type="number" placeholder="请输入" />
+        <FormItem label="is_deleted: " prop="allowCopy">
+          <Input v-model="cebFormData.is_deleted" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="status: " prop="allowCopy">
+          <Input v-model="cebFormData.status" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="created_time: " prop="allowCopy">
+          <Input v-model="cebFormData.created_time" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="last_modified_time: " prop="allowCopy">
+          <Input v-model="cebFormData.last_modified_time" type="number" placeholder="请输入" />
         </FormItem>
       </Form>
       <div slot="footer">
@@ -120,52 +129,64 @@
 
     <!-- 详情弹出框 -->
     <Modal v-model="blackDetailModal" title="详情" width="600px">
-      <Form ref="createForm" :model="cebFormData" :rules="blackRules" :label-width="150">
-        <FormItem label="bidder_code_type: " prop="bidder_code_type">
-          <!-- <Input v-model="cebFormData.bidder_code_type" placeholder="请输入" /> -->
-          {{cebFormData.bidder_code_type}}
+       <Form :model="cebFormData" :rules="blackRules" :label-width="150">
+        <FormItem label="industryType: " prop="bidder_code_type">
+          <!-- <Input v-model="cebFormData.industryType" placeholder="请输入" /> -->
+          {{cebFormData.industryType}}
         </FormItem>
-        <FormItem label="bidder_code: " prop="bidder_code">
-          <!-- <Input v-model="cebFormData.bidder_code" type="number" placeholder="请输入" /> -->
-          {{cebFormData.bidder_code}}
+        <FormItem label="cebTenderProject: " prop="bidder_code">
+          <!-- <Input v-model="cebFormData.cebTenderProject" type="number" placeholder="请输入" /> -->
+          {{cebFormData.cebTenderProject}}
         </FormItem>
-        <FormItem label="bidder_name: " prop="bidder_name">
-          <!-- <Input v-model="cebFormData.bidder_name" type="number" placeholder="请输入" /> -->
-          {{cebFormData.bidder_name}}
+        <FormItem label="bid_section_name: " prop="bidder_name">
+          <!-- <Input v-model="cebFormData.bid_section_name" type="number" placeholder="请输入" /> -->
+          {{cebFormData.bid_section_name}}
         </FormItem>
-        <FormItem label="is_unions: " prop="is_unions">
-          <!-- <Input v-model="cebFormData.is_unions" type="number" placeholder="请输入" /> -->
-          {{cebFormData.is_unions}}
+        <FormItem label="bid_section_code: " prop="is_unions">
+          <!-- <Input v-model="cebFormData.bid_section_code" type="number" placeholder="请输入" /> -->
+          {{cebFormData.bid_section_code}}
         </FormItem>
-        <FormItem label="union_code: " prop="isAllow">
-          <!-- <Input v-model="cebFormData.union_code" type="number" placeholder="请输入" /> -->
-          {{cebFormData.union_code}}
+        <FormItem label="bid_section_content: " prop="isAllow">
+          <!-- <Input v-model="cebFormData.bid_section_content" type="number" placeholder="请输入" /> -->
+          {{cebFormData.bid_section_content}}
         </FormItem>
-        <FormItem label="union_name: " prop="ipCount">
-          <!-- <Input v-model="cebFormData.union_name" type="number" placeholder="请输入" /> -->
-          {{cebFormData.union_name}}
+        <FormItem label="contract_reckon_price: " prop="ipCount">
+          <!-- <Input v-model="cebFormData.contract_reckon_price" type="number" placeholder="请输入" /> -->
+          {{cebFormData.contract_reckon_price}}
         </FormItem>
-        <FormItem label="price_type: " prop="isPic">
-          <!-- <Input v-model="cebFormData.price_type" type="number" placeholder="请输入" /> -->
-          {{cebFormData.price_type}}
+        <FormItem label="currency_code: " prop="isPic">
+          <!-- <Input v-model="cebFormData.currency_code" type="number" placeholder="请输入" /> -->
+          {{cebFormData.currency_code}}
         </FormItem>
-        <FormItem label="bid_price: " prop="allowCopy">
-          <!-- <Input v-model="cebFormData.bid_price" type="number" placeholder="请输入" /> -->
-          {{cebFormData.bid_price}}
+        <FormItem label="bidding_eligibility: " prop="allowCopy">
+          <!-- <Input v-model="cebFormData.bidding_eligibility" type="number" placeholder="请输入" /> -->
+          {{cebFormData.bidding_eligibility}}
         </FormItem>
         <FormItem label="bid_proce_currency_code: " prop="allowCopy">
           <!-- <Input v-model="cebFormData.bid_proce_currency_code" type="number" placeholder="请输入" /> -->
           {{cebFormData.bid_proce_currency_code}}
         </FormItem>
-        <FormItem label="rate: " prop="allowCopy">
-          <!-- <Input v-model="cebFormData.rate" type="number" placeholder="请输入" /> -->
-          {{cebFormData.rate}}
+        <FormItem label="member_id: " prop="allowCopy">
+          <!-- <Input v-model="cebFormData.member_id" type="number" placeholder="请输入" /> -->
+          {{cebFormData.member_id}}
         </FormItem>
-        <FormItem label="other_bid_price: " prop="allowCopy">
-          <!-- <Input v-model="cebFormData.other_bid_price" type="number" placeholder="请输入" /> -->
-          {{cebFormData.other_bid_price}}
+        <FormItem label="is_deleted: " prop="allowCopy">
+          <!-- <Input v-model="cebFormData.is_deleted" type="number" placeholder="请输入" /> -->
+          {{cebFormData.is_deleted}}
         </FormItem>
-      </Form>
+        <FormItem label="status: " prop="allowCopy">
+          <!-- <Input v-model="cebFormData.status" type="number" placeholder="请输入" /> -->
+          {{cebFormData.status}}
+        </FormItem>
+        <FormItem label="created_time: " prop="allowCopy">
+          <!-- <Input v-model="cebFormData.created_time" type="number" placeholder="请输入" /> -->
+          {{cebFormData.created_time}}
+        </FormItem>
+        <FormItem label="last_modified_time: " prop="allowCopy">
+          <!-- <Input v-model="cebFormData.last_modified_time" type="number" placeholder="请输入" /> -->
+          {{cebFormData.last_modified_time}}
+        </FormItem>
+       </Form>
       <div slot="footer">
         <!-- <Button type="text" @click="blackListModal = false">取消</Button> -->
         <Button type="primary" @click="blackDetailModal = false">确定</Button>
@@ -265,17 +286,20 @@ export default {
       dataList: [
         {
           id: 11,
-          bidder_code_type: 'admin',
-          bidder_code: 200,
-          bidder_name: 300,
-          is_unions: 1,
-          union_code: "202.118.118.1",
-          union_name: "202.118.118.2",
-          price_type: 11,
-          bid_price: 1,
+          industryType: 'admin',
+          cebTenderProject: 200,
+          bid_section_name: 300,
+          bid_section_code: 1,
+          bid_section_content: "202.118.118.1",
+          contract_reckon_price: "202.118.118.2",
+          currency_code: 11,
+          bidding_eligibility: 1,
           bid_proce_currency_code: 1,
-          rate: 1,
-          other_bid_price: 1
+          member_id: 1,
+          is_deleted: 1,
+          status: 1,
+          created_time: 1,
+          last_modified_time: 1
         }
       ],
       loading: false,
@@ -288,17 +312,20 @@ export default {
       blackListModal: false,
       isUpdate: false,
       cebFormData: {
-        bidder_code_type: "",
-        bidder_code: "",
-        bidder_name: "",
-        is_unions: "",
-        union_code: "",
-        union_name: "",
-        price_type: "",
-        bid_price: "",
-        bid_proce_currency_code: "",
-        rate: "",
-        other_bid_price: ""
+          industryType: 'admin',
+          cebTenderProject: 200,
+          bid_section_name: 300,
+          bid_section_code: 1,
+          bid_section_content: "202.118.118.1",
+          contract_reckon_price: "202.118.118.2",
+          currency_code: 11,
+          bidding_eligibility: 1,
+          bid_proce_currency_code: 1,
+          member_id: 1,
+          is_deleted: 1,
+          status: 1,
+          created_time: 1,
+          last_modified_time: 1
       },
       blackRules: {},
       // 详情

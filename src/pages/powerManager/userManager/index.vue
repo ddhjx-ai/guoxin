@@ -51,8 +51,8 @@
           <template slot-scope="{ row }" slot="time">{{row.time | dataFormate}}</template>
           <template slot-scope="{ row,index }" slot="action">
             <a @click="handleUpdate(index)">编辑</a>
-            <Divider type="vertical" />
-            <a @click="handleDetail(row)">详情</a>
+            <!-- <Divider type="vertical" />
+            <a @click="handleDetail(row)">详情</a> -->
             <Divider type="vertical" />
             <a @click="partRole(row)">分配角色</a>
           </template>

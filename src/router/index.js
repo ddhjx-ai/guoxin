@@ -26,6 +26,20 @@ const router = new VueRouter({
  */
 
 router.beforeEach((to, from, next) => {
+  if(util.cookies.get("token")) {
+    if(to.path === '/login'){
+      util.cookies.remove("token")
+      next()
+    }
+    next();
+  } else {
+    if (to.path == '/login') {
+      // 存在
+      next(); // to
+    } else {
+      next("/login"); // 路由指向
+    }
+  }
   /* if (Setting.showProgressBar) iView.LoadingBar.start();
     // 判断是否需要登录才可以进入
     if (to.matched.some(_ => _.meta.auth)) {
@@ -48,7 +62,7 @@ router.beforeEach((to, from, next) => {
         // 不需要身份校验 直接通过
         next();
     } */
-  next()
+  // next()
   /* const token = util.cookies.get("token");
   console.log(token)
   if (token && token !== "undefined") {

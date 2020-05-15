@@ -54,7 +54,7 @@ export default {
      * 表单校验已有 iView Pro 自动完成，如有需要修改，请阅读 iView Pro 文档
      */
     handleSubmit(valid, values) {
-      /* if (valid) {
+      if (valid) {
         const { user_name, user_pwd } = values;
         this.login({
           user_name,
@@ -63,11 +63,11 @@ export default {
           // 重定向对象不存在则返回顶层路径
           this.$router.replace(this.$route.query.redirect || "/");
         });
-      } */
+      }
       
-      this.$router.push({
+      /* this.$router.push({
         name: 'dashboard-console'
-      })
+      }) */
     }
   }
 };

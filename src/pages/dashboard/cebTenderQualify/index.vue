@@ -19,7 +19,7 @@
               <Option value="true">是</Option>
             </Select>
           </FormItem>
-        </Col> -->
+        </Col>-->
         <Col :span="8" class="ivu-text-right">
           <FormItem>
             <Button type="primary" @click="handleSubmit">查询</Button>
@@ -78,44 +78,65 @@
       @on-visible-change="modalChange"
     >
       <Form ref="createForm" :model="blackFormData" :rules="blackRules" :label-width="150">
-        <FormItem label="alias: " prop="weekly">
-          <Input v-model="blackFormData.weekly" placeholder="请输入" />
+        <FormItem label="url: " prop="weekly">
+          <Input v-model="blackFormData.url" placeholder="请输入" />
         </FormItem>
-        <FormItem label="name: " prop="monthly">
-          <Input v-model="blackFormData.monthly" type="number" placeholder="请输入" />
+        <FormItem label="notice_nature: " prop="monthly">
+          <Input v-model="blackFormData.notice_nature" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="url: " prop="delayTime">
-          <Input v-model="blackFormData.delayTime" type="number" placeholder="请输入" />
+        <FormItem label="doc_get_start_time: " prop="delayTime">
+          <Input v-model="blackFormData.doc_get_start_time" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="query: " prop="ipNotAllow">
-          <Input v-model="blackFormData.ipNotAllow" type="number" placeholder="请输入" />
+        <FormItem label="doc_get_end_time: " prop="ipNotAllow">
+          <Input v-model="blackFormData.doc_get_end_time" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_query: " prop="isAllow">
-          <Input v-model="blackFormData.isAllow" type="number" placeholder="请输入" />
+        <FormItem label="doc_get_method: " prop="isAllow">
+          <Input v-model="blackFormData.doc_get_method" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_table_name: " prop="ipCount">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="bid_doc_refer_end_time: " prop="ipCount">
+          <Input v-model="blackFormData.bid_doc_refer_end_time" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_table_name2: " prop="isPic">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="bid_doc_refer_method: " prop="isPic">
+          <Input v-model="blackFormData.bid_doc_refer_method" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_area: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="bid_doc_price: " prop="allowCopy">
+          <Input v-model="blackFormData.bid_doc_price" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_cate: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="syndicated_flag: " prop="allowCopy">
+          <Input v-model="blackFormData.syndicated_flag" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_calssaid: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="is_postpone: " prop="allowCopy">
+          <Input v-model="blackFormData.is_postpone" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="is_show_description: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="bid_open_time: " prop="allowCopy">
+          <Input v-model="blackFormData.bid_open_time" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="is_show_total: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="BID_OPEN_PLACE: " prop="allowCopy">
+          <Input v-model="blackFormData.BID_OPEN_PLACE" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="rp: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="bid_open_method: " prop="allowCopy">
+          <Input v-model="blackFormData.bid_open_method" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="qual_type: " prop="monthly">
+          <Input v-model="blackFormData.qual_type" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="ohter_content: " prop="delayTime">
+          <Input v-model="blackFormData.ohter_content" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="bulletin_duty: " prop="ipNotAllow">
+          <Input v-model="blackFormData.bulletin_duty" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="examiner_name: " prop="isAllow">
+          <Input v-model="blackFormData.examiner_name" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="qualify_require: " prop="ipCount">
+          <Input v-model="blackFormData.qualify_require" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="ability_require: " prop="isPic">
+          <Input v-model="blackFormData.ability_require" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="info_type: " prop="allowCopy">
+          <Input v-model="blackFormData.info_type" type="number" placeholder="请输入" />
         </FormItem>
       </Form>
       <div slot="footer">
@@ -126,40 +147,86 @@
 
     <!-- 详情弹出框 -->
     <Modal v-model="blackDetailModal" title="详情" width="600px">
-      <Form :model="blackDetail" :label-width="120">
-        <FormItem label="每天条数：">
-          <!-- <Input v-model="blackDetail.daily" placeholder="请输入" /> -->
-          {{blackDetail.daily}}
+      <Form ref="createForm" :model="blackFormData" :rules="blackRules" :label-width="150">
+        <FormItem label="url: " prop="weekly">
+          <!-- <Input v-model="blackFormData.url" placeholder="请输入" /> -->
+          {{blackFormData.url}}
         </FormItem>
-        <FormItem label="每周条数：">
-          <!-- <Input v-model="blackDetail.weekly" placeholder="请输入" /> -->
-          {{blackDetail.weekly}}
+        <FormItem label="notice_nature: " prop="monthly">
+          <!-- <Input v-model="blackFormData.notice_nature" type="number" placeholder="请输入" /> -->
+          {{blackFormData.notice_nature}}
         </FormItem>
-        <FormItem label="每月条数：">
-          <!-- <Input v-model="blackDetail.monthly" type="number" placeholder="请输入" /> -->
-          {{blackDetail.monthly}}
+        <FormItem label="doc_get_start_time: " prop="delayTime">
+          <!-- <Input v-model="blackFormData.doc_get_start_time" type="number" placeholder="请输入" /> -->
+          {{blackFormData.doc_get_start_time}}
         </FormItem>
-        <FormItem label="延时时间：">
-          <!-- <Input v-model="blackDetail.delayTime" type="number" placeholder="请输入" /> -->
-          {{blackDetail.delayTime}}
+        <FormItem label="doc_get_end_time: " prop="ipNotAllow">
+          <!-- <Input v-model="blackFormData.doc_get_end_time" type="number" placeholder="请输入" /> -->
+          {{blackFormData.doc_get_end_time}}
         </FormItem>
-        <FormItem label="允许登录个数：">
-          <!-- <Input v-model="blackDetail.ipCount" type="number" placeholder="请输入" /> -->
-          {{blackDetail.ipCount}}
+        <FormItem label="doc_get_method: " prop="isAllow">
+          <!-- <Input v-model="blackFormData.doc_get_method" type="number" placeholder="请输入" /> -->
+          {{blackFormData.doc_get_method}}
         </FormItem>
-        <FormItem label="信息转成图片：">
-          <!-- <Radio-group :model.sync="blackDetail.isPic">
-            <Radio value="true">是</Radio>
-            <Radio value="false">否</Radio>
-          </Radio-group>-->
-          {{blackDetail.isPic ? '是' : '否'}}
+        <FormItem label="bid_doc_refer_end_time: " prop="ipCount">
+          <!-- <Input v-model="blackFormData.bid_doc_refer_end_time" type="number" placeholder="请输入" /> -->
+          {{blackFormData.bid_doc_refer_end_time}}
         </FormItem>
-        <FormItem label="允许复制：">
-          <!-- <Radio-group :model.sync="blackFormData.allowCopy">
-            <Radio value="true">是</Radio>
-            <Radio value="false">否</Radio>
-          </Radio-group>-->
-          {{blackDetail.allowCopy ? '是' : '否'}}
+        <FormItem label="bid_doc_refer_method: " prop="isPic">
+          <!-- <Input v-model="blackFormData.bid_doc_refer_method" type="number" placeholder="请输入" /> -->
+          {{blackFormData.bid_doc_refer_method}}
+        </FormItem>
+        <FormItem label="bid_doc_price: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.bid_doc_price" type="number" placeholder="请输入" /> -->
+          {{blackFormData.bid_doc_price}}
+        </FormItem>
+        <FormItem label="syndicated_flag: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.syndicated_flag" type="number" placeholder="请输入" /> -->
+          {{blackFormData.syndicated_flag}}
+        </FormItem>
+        <FormItem label="is_postpone: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.is_postpone" type="number" placeholder="请输入" /> -->
+          {{blackFormData.is_postpone}}
+        </FormItem>
+        <FormItem label="bid_open_time: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.bid_open_time" type="number" placeholder="请输入" /> -->
+          {{blackFormData.bid_open_time}}
+        </FormItem>
+        <FormItem label="BID_OPEN_PLACE: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.BID_OPEN_PLACE" type="number" placeholder="请输入" /> -->
+          {{blackFormData.BID_OPEN_PLACE}}
+        </FormItem>
+        <FormItem label="bid_open_method: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.bid_open_method" type="number" placeholder="请输入" /> -->
+          {{blackFormData.bid_open_method}}
+        </FormItem>
+        <FormItem label="qual_type: " prop="monthly">
+          <!-- <Input v-model="blackFormData.qual_type" type="number" placeholder="请输入" /> -->
+          {{blackFormData.qual_type}}
+        </FormItem>
+        <FormItem label="ohter_content: " prop="delayTime">
+          <!-- <Input v-model="blackFormData.ohter_content" type="number" placeholder="请输入" /> -->
+          {{blackFormData.ohter_content}}
+        </FormItem>
+        <FormItem label="bulletin_duty: " prop="ipNotAllow">
+          <!-- <Input v-model="blackFormData.bulletin_duty" type="number" placeholder="请输入" /> -->
+          {{blackFormData.bulletin_duty}}
+        </FormItem>
+        <FormItem label="examiner_name: " prop="isAllow">
+          <!-- <Input v-model="blackFormData.examiner_name" type="number" placeholder="请输入" /> -->
+          {{blackFormData.examiner_name}}
+        </FormItem>
+        <FormItem label="qualify_require: " prop="ipCount">
+          <!-- <Input v-model="blackFormData.qualify_require" type="number" placeholder="请输入" /> -->
+          {{blackFormData.qualify_require}}
+        </FormItem>
+        <FormItem label="ability_require: " prop="isPic">
+          <!-- <Input v-model="blackFormData.ability_require" type="number" placeholder="请输入" /> -->
+          {{blackFormData.ability_require}}
+        </FormItem>
+        <FormItem label="info_type: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.info_type" type="number" placeholder="请输入" /> -->
+          {{blackFormData.info_type}}
         </FormItem>
       </Form>
       <div slot="footer">
@@ -187,53 +254,53 @@ export default {
           minWidth: 100
         },
         {
-          title: "attachment_code",
-          key: "attachment_code",
+          title: "url",
+          key: "url",
           minWidth: 100
         },
         {
-          title: "attachment_file_name",
-          key: "attachment_file_name",
+          title: "notice_nature",
+          key: "notice_nature",
           minWidth: 100
         },
         {
-          title: "save_abs_path",
-          key: "save_abs_path",
+          title: "doc_get_start_time",
+          key: "doc_get_start_time",
           minWidth: 100
         },
         {
-          title: "file_type",
-          key: "file_type",
+          title: "doc_get_end_time",
+          key: "doc_get_end_time",
           minWidth: 100
         },
         {
-          title: "data_timestamp",
-          key: "data_timestamp",
+          title: "doc_get_method",
+          key: "doc_get_method",
           minWidth: 100
         },
         {
-          title: "md5",
-          key: "md5",
+          title: "bid_doc_refer_end_time",
+          key: "bid_doc_refer_end_time",
           minWidth: 100
         },
         {
-          title: "notice_id",
-          key: "notice_id",
+          title: "bid_doc_refer_method",
+          key: "bid_doc_refer_method",
           minWidth: 120
         },
         {
-          title: "member_id",
-          key: "member_id",
+          title: "bid_doc_price",
+          key: "bid_doc_price",
           minWidth: 100
         },
         {
-          title: "is_deleted",
-          key: "is_deleted",
+          title: "bid_url",
+          key: "bid_url",
           minWidth: 100
         },
         {
-          title: "sphinx_calssaid",
-          key: "sphinx_calssaid",
+          title: "syndicated_flag",
+          key: "syndicated_flag",
           minWidth: 100
         },
         {
@@ -242,13 +309,58 @@ export default {
           minWidth: 100
         },
         {
-          title: "is_show_total",
-          key: "is_show_total",
+          title: "is_postpone",
+          key: "is_postpone",
           minWidth: 100
         },
         {
-          title: "rp",
-          key: "rp",
+          title: "bid_open_time",
+          key: "bid_open_time",
+          minWidth: 100
+        },
+        {
+          title: "BID_OPEN_PLACE",
+          key: "BID_OPEN_PLACE",
+          minWidth: 120
+        },
+        {
+          title: "bid_open_method",
+          key: "bid_open_method",
+          minWidth: 100
+        },
+        {
+          title: "qual_type",
+          key: "qual_type",
+          minWidth: 100
+        },
+        {
+          title: "ohter_content",
+          key: "ohter_content",
+          minWidth: 100
+        },
+        {
+          title: "bulletin_duty",
+          key: "bulletin_duty",
+          minWidth: 100
+        },
+        {
+          title: "examiner_name",
+          key: "examiner_name",
+          minWidth: 100
+        },
+        {
+          title: "qualify_require",
+          key: "qualify_require",
+          minWidth: 100
+        },
+        {
+          title: "ability_require",
+          key: "ability_require",
+          minWidth: 100
+        },
+        {
+          title: "info_type",
+          key: "info_type",
           minWidth: 100
         },
         {
@@ -260,18 +372,28 @@ export default {
       ],
       dataList: [
         {
-          id: 11,
-          attachment_code: 'admin',
-          attachment_file_name: 200,
-          save_abs_path: 300,
-          file_type: 1,
-          data_timestamp: "202.118.118.1",
-          md5: "202.118.118.2",
-          notice_id: 11,
-          member_id: 1,
-          is_deleted: 1,
-          create_time: 1,
-          last_modified_time: 1
+          id: 22, // Number
+          url: "", // Number
+          notice_nature: "", // String
+          doc_get_start_time: "", // String
+          doc_get_end_time: "", // String
+          doc_get_method: "", // String
+          bid_doc_refer_end_time: "", // String
+          bid_doc_refer_method: "", // String
+          bid_doc_price: "", // String
+          bid_url: "", // String
+          syndicated_flag: "", // Number 0:否，1：是
+          is_postpone: "", // String
+          bid_open_time: "", // String
+          BID_OPEN_PLACE: "", // String
+          bid_open_method: "", // String
+          qual_type: "", // String
+          ohter_content: "", // String
+          bulletin_duty: "", // String
+          examiner_name: "", // String
+          qualify_require: "", // String
+          ability_require: "", // String
+          info_type: "" // Number
         }
       ],
       loading: false,
@@ -284,16 +406,28 @@ export default {
       blackListModal: false,
       isUpdate: false,
       blackFormData: {
-        daily: "",
-        weekly: "",
-        monthly: "",
-        delayTime: "",
-        ipNotAllow: "",
-        isAllow: "",
-        ipCount: "",
-        isHunXiao: "",
-        isPic: "",
-        allowCopy: ""
+        id: 22, // Number
+        url: "", // Number
+        notice_nature: "", // String
+        doc_get_start_time: "", // String
+        doc_get_end_time: "", // String
+        doc_get_method: "", // String
+        bid_doc_refer_end_time: "", // String
+        bid_doc_refer_method: "", // String
+        bid_doc_price: "", // String
+        bid_url: "", // String
+        syndicated_flag: "", // Number 0:否，1：是
+        is_postpone: "", // Number
+        bid_open_time: "", // Number
+        BID_OPEN_PLACE: "", // Number
+        bid_open_method: "", // Number
+        qual_type: "", // Number
+        ohter_content: "", // String
+        bulletin_duty: "", // String
+        examiner_name: "", // String
+        qualify_require: "", // String
+        ability_require: "", // String
+        info_type: "" // Number
       },
       blackRules: {},
       // 详情
@@ -324,7 +458,7 @@ export default {
     handleSubmit() {},
     handleReset() {},
     modalChange() {
-      this.$refs.createForm.resetFields()
+      this.$refs.createForm.resetFields();
     },
     handleSave() {}
   }

@@ -18,7 +18,8 @@ const Setting = {
     showProgressBar: true,
     // 接口请求地址
     // apiBaseURL: env === 'development' ? 'http://www.web-jshtml.cn/productapi/token' : 'http://www.web-jshtml.cn/productapi/token',
-    apiBaseURL: env === 'development' ? 'http://192.168.0.115:9000' : 'http://192.168.0.115:9000',
+    apiBaseURL: env === 'development' ? 'http://192.168.0.129:9000' : 'http://192.168.0.129:9000',
+    // apiBaseURL: env === 'development' ? '/' : '/',
     // apiBaseURL: env === 'development' ? '/' : '/',
     // 接口请求返回错误时，弹窗的持续时间，单位：秒
     modalDuration: 3,

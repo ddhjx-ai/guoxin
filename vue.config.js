@@ -19,7 +19,7 @@ module.exports = {
     port: '9000',
     proxy: {
       "/api": {
-        target: "http://192.168.0.116:9000",
+        target: "http://192.168.0.129:9000",
         ws: true,
         changeOrigin: true,
         pathRewrite: {
@@ -27,18 +27,6 @@ module.exports = {
         },
       },
     },
-    /* proxy: {
-      // 设置代理
-      [process.env.VUE_APP_BASE_API]: {
-        target: `http://192.168.0.115:9000`, // 测试
-        // target: `http://www.web-jshtml.cn/productapi/token`, // 测试
-        changeOrigin: true,
-        ws: true,
-        pathRewrite: {
-          ["^" + process.env.VUE_APP_BASE_API]: ""
-        }
-      }
-    } */
   },
   css: {
     loaderOptions: {

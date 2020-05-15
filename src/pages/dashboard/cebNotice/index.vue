@@ -19,7 +19,7 @@
               <Option value="true">是</Option>
             </Select>
           </FormItem>
-        </Col> -->
+        </Col>-->
         <Col :span="8" class="ivu-text-right">
           <FormItem>
             <Button type="primary" @click="handleSubmit">查询</Button>
@@ -78,44 +78,50 @@
       @on-visible-change="modalChange"
     >
       <Form ref="createForm" :model="blackFormData" :rules="blackRules" :label-width="150">
-        <FormItem label="alias: " prop="weekly">
-          <Input v-model="blackFormData.weekly" placeholder="请输入" />
+        <FormItem label="cebEnergy: " prop="weekly">
+          <Input v-model="blackFormData.cebEnergy" placeholder="请输入" />
         </FormItem>
-        <FormItem label="name: " prop="monthly">
-          <Input v-model="blackFormData.monthly" type="number" placeholder="请输入" />
+        <FormItem label="notice_code: " prop="monthly">
+          <Input v-model="blackFormData.notice_code" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="url: " prop="delayTime">
-          <Input v-model="blackFormData.delayTime" type="number" placeholder="请输入" />
+        <FormItem label="notice_name: " prop="delayTime">
+          <Input v-model="blackFormData.notice_name" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="query: " prop="ipNotAllow">
-          <Input v-model="blackFormData.ipNotAllow" type="number" placeholder="请输入" />
+        <FormItem label="notice_type: " prop="ipNotAllow">
+          <Input v-model="blackFormData.notice_type" type="number" placeholder="请输入" />
         </FormItem>
         <FormItem label="sphinx_query: " prop="isAllow">
           <Input v-model="blackFormData.isAllow" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_table_name: " prop="ipCount">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="notice_content: " prop="ipCount">
+          <Input v-model="blackFormData.notice_content" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_table_name2: " prop="isPic">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="notice_send_time: " prop="isPic">
+          <Input v-model="blackFormData.notice_send_time" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_area: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="notice_media: " prop="allowCopy">
+          <Input v-model="blackFormData.notice_media" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_cate: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="member_id: " prop="allowCopy">
+          <Input v-model="blackFormData.member_id" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_calssaid: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="is_deleted: " prop="allowCopy">
+          <Input v-model="blackFormData.is_deleted" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="is_show_description: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="submit_timestamp: " prop="allowCopy">
+          <Input v-model="blackFormData.submit_timestamp" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="is_show_total: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="status: " prop="allowCopy">
+          <Input v-model="blackFormData.status" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="rp: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="platStatus: " prop="allowCopy">
+          <Input v-model="blackFormData.platStatus" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="created_time: " prop="allowCopy">
+          <Input v-model="blackFormData.created_time" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="last_modified_time: " prop="allowCopy">
+          <Input v-model="blackFormData.last_modified_time" type="number" placeholder="请输入" />
         </FormItem>
       </Form>
       <div slot="footer">
@@ -126,40 +132,66 @@
 
     <!-- 详情弹出框 -->
     <Modal v-model="blackDetailModal" title="详情" width="600px">
-      <Form :model="blackDetail" :label-width="120">
-        <FormItem label="每天条数：">
-          <!-- <Input v-model="blackDetail.daily" placeholder="请输入" /> -->
-          {{blackDetail.daily}}
+      <Form ref="createForm" :model="blackFormData" :rules="blackRules" :label-width="150">
+        <FormItem label="cebEnergy: " prop="weekly">
+          <!-- <Input v-model="blackFormData.cebEnergy" placeholder="请输入" /> -->
+          {{blackFormData.cebEnergy}}
         </FormItem>
-        <FormItem label="每周条数：">
-          <!-- <Input v-model="blackDetail.weekly" placeholder="请输入" /> -->
-          {{blackDetail.weekly}}
+        <FormItem label="notice_code: " prop="monthly">
+          <!-- <Input v-model="blackFormData.notice_code" type="number" placeholder="请输入" /> -->
+          {{blackFormData.notice_code}}
         </FormItem>
-        <FormItem label="每月条数：">
-          <!-- <Input v-model="blackDetail.monthly" type="number" placeholder="请输入" /> -->
-          {{blackDetail.monthly}}
+        <FormItem label="notice_name: " prop="delayTime">
+          <!-- <Input v-model="blackFormData.notice_name" type="number" placeholder="请输入" /> -->
+          {{blackFormData.notice_name}}
         </FormItem>
-        <FormItem label="延时时间：">
-          <!-- <Input v-model="blackDetail.delayTime" type="number" placeholder="请输入" /> -->
-          {{blackDetail.delayTime}}
+        <FormItem label="notice_type: " prop="ipNotAllow">
+          <!-- <Input v-model="blackFormData.notice_type" type="number" placeholder="请输入" /> -->
+          {{blackFormData.notice_type}}
         </FormItem>
-        <FormItem label="允许登录个数：">
-          <!-- <Input v-model="blackDetail.ipCount" type="number" placeholder="请输入" /> -->
-          {{blackDetail.ipCount}}
+        <FormItem label="sphinx_query: " prop="isAllow">
+          <!-- <Input v-model="blackFormData.isAllow" type="number" placeholder="请输入" /> -->
+          {{blackFormData.isAllow}}
         </FormItem>
-        <FormItem label="信息转成图片：">
-          <!-- <Radio-group :model.sync="blackDetail.isPic">
-            <Radio value="true">是</Radio>
-            <Radio value="false">否</Radio>
-          </Radio-group>-->
-          {{blackDetail.isPic ? '是' : '否'}}
+        <FormItem label="notice_content: " prop="ipCount">
+          <!-- <Input v-model="blackFormData.notice_content" type="number" placeholder="请输入" /> -->
+          {{blackFormData.notice_content}}
         </FormItem>
-        <FormItem label="允许复制：">
-          <!-- <Radio-group :model.sync="blackFormData.allowCopy">
-            <Radio value="true">是</Radio>
-            <Radio value="false">否</Radio>
-          </Radio-group>-->
-          {{blackDetail.allowCopy ? '是' : '否'}}
+        <FormItem label="notice_send_time: " prop="isPic">
+          <!-- <Input v-model="blackFormData.notice_send_time" type="number" placeholder="请输入" /> -->
+          {{blackFormData.notice_send_time}}
+        </FormItem>
+        <FormItem label="notice_media: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.notice_media" type="number" placeholder="请输入" /> -->
+          {{blackFormData.notice_media}}
+        </FormItem>
+        <FormItem label="member_id: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.member_id" type="number" placeholder="请输入" /> -->
+          {{blackFormData.member_id}}
+        </FormItem>
+        <FormItem label="is_deleted: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.is_deleted" type="number" placeholder="请输入" /> -->
+          {{blackFormData.is_deleted}}
+        </FormItem>
+        <FormItem label="submit_timestamp: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.submit_timestamp" type="number" placeholder="请输入" /> -->
+          {{blackFormData.submit_timestamp}}
+        </FormItem>
+        <FormItem label="status: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.status" type="number" placeholder="请输入" /> -->
+          {{blackFormData.status}}
+        </FormItem>
+        <FormItem label="platStatus: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.platStatus" type="number" placeholder="请输入" /> -->
+          {{blackFormData.platStatus}}
+        </FormItem>
+        <FormItem label="created_time: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.created_time" type="number" placeholder="请输入" /> -->
+          {{blackFormData.created_time}}
+        </FormItem>
+        <FormItem label="last_modified_time: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.last_modified_time" type="number" placeholder="请输入" /> -->
+          {{blackFormData.last_modified_time}}
         </FormItem>
       </Form>
       <div slot="footer">
@@ -187,39 +219,44 @@ export default {
           minWidth: 100
         },
         {
-          title: "attachment_code",
-          key: "attachment_code",
+          title: "serialVersionUID",
+          key: "serialVersionUID",
           minWidth: 100
         },
         {
-          title: "attachment_file_name",
-          key: "attachment_file_name",
+          title: "cebEnergy",
+          key: "cebEnergy",
           minWidth: 100
         },
         {
-          title: "save_abs_path",
-          key: "save_abs_path",
+          title: "notice_code",
+          key: "notice_code",
           minWidth: 100
         },
         {
-          title: "file_type",
-          key: "file_type",
+          title: "notice_name",
+          key: "notice_name",
           minWidth: 100
         },
         {
-          title: "data_timestamp",
-          key: "data_timestamp",
+          title: "notice_type",
+          key: "notice_type",
           minWidth: 100
         },
         {
-          title: "md5",
-          key: "md5",
+          title: "notice_content",
+          key: "notice_content",
           minWidth: 100
         },
         {
-          title: "notice_id",
-          key: "notice_id",
+          title: "notice_send_time",
+          key: "notice_send_time",
           minWidth: 120
+        },
+        {
+          title: "notice_media",
+          key: "notice_media",
+          minWidth: 100
         },
         {
           title: "member_id",
@@ -232,23 +269,28 @@ export default {
           minWidth: 100
         },
         {
-          title: "sphinx_calssaid",
-          key: "sphinx_calssaid",
+          title: "submit_timestamp",
+          key: "submit_timestamp",
           minWidth: 100
         },
         {
-          title: "is_show_description",
-          key: "is_show_description",
+          title: "status",
+          key: "status",
           minWidth: 100
         },
         {
-          title: "is_show_total",
-          key: "is_show_total",
+          title: "platStatus",
+          key: "platStatus",
           minWidth: 100
         },
         {
-          title: "rp",
-          key: "rp",
+          title: "created_time",
+          key: "created_time",
+          minWidth: 100
+        },
+        {
+          title: "last_modified_time",
+          key: "last_modified_time",
           minWidth: 100
         },
         {
@@ -260,18 +302,22 @@ export default {
       ],
       dataList: [
         {
-          id: 11,
-          attachment_code: 'admin',
-          attachment_file_name: 200,
-          save_abs_path: 300,
-          file_type: 1,
-          data_timestamp: "202.118.118.1",
-          md5: "202.118.118.2",
-          notice_id: 11,
-          member_id: 1,
-          is_deleted: 1,
-          create_time: 1,
-          last_modified_time: 1
+          serialVersionUID: 11, // Number
+          id: 22, // Number
+          cebEnergy: "", // String
+          notice_code: "", // String
+          notice_name: "", // String
+          notice_type: "", // Number
+          notice_content: "", // String
+          notice_send_time: "", // String
+          notice_media: "", // String
+          member_id: "", // Number
+          is_deleted: "", // Number
+          submit_timestamp: "", // String
+          status: "", // Number
+          platStatus: "", // Number
+          created_time: "", // String
+          last_modified_time: "" // String
         }
       ],
       loading: false,
@@ -284,16 +330,20 @@ export default {
       blackListModal: false,
       isUpdate: false,
       blackFormData: {
-        daily: "",
-        weekly: "",
-        monthly: "",
-        delayTime: "",
-        ipNotAllow: "",
-        isAllow: "",
-        ipCount: "",
-        isHunXiao: "",
-        isPic: "",
-        allowCopy: ""
+        cebEnergy: "", // String
+        notice_code: "", // String
+        notice_name: "", // String
+        notice_type: "", // Number
+        notice_content: "", // String
+        notice_send_time: "", // String
+        notice_media: "", // String
+        member_id: "", // Number
+        is_deleted: "", // Number
+        submit_timestamp: "", // String
+        status: "", // Number
+        platStatus: "", // Number
+        created_time: "", // String
+        last_modified_time: "" // String
       },
       blackRules: {},
       // 详情
@@ -324,7 +374,7 @@ export default {
     handleSubmit() {},
     handleReset() {},
     modalChange() {
-      this.$refs.createForm.resetFields()
+      this.$refs.createForm.resetFields();
     },
     handleSave() {}
   }

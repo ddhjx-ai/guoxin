@@ -19,7 +19,7 @@
               <Option value="true">是</Option>
             </Select>
           </FormItem>
-        </Col> -->
+        </Col>-->
         <Col :span="8" class="ivu-text-right">
           <FormItem>
             <Button type="primary" @click="handleSubmit">查询</Button>
@@ -78,44 +78,95 @@
       @on-visible-change="modalChange"
     >
       <Form ref="createForm" :model="blackFormData" :rules="blackRules" :label-width="150">
-        <FormItem label="alias: " prop="weekly">
-          <Input v-model="blackFormData.weekly" placeholder="请输入" />
+        <FormItem label="isunion: " prop="weekly">
+          <Input v-model="blackFormData.isunion" placeholder="请输入" />
         </FormItem>
-        <FormItem label="name: " prop="monthly">
-          <Input v-model="blackFormData.monthly" type="number" placeholder="请输入" />
+        <FormItem label="tender_code_type: " prop="monthly">
+          <Input v-model="blackFormData.tender_code_type" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="url: " prop="delayTime">
-          <Input v-model="blackFormData.delayTime" type="number" placeholder="请输入" />
+        <FormItem label="tender_code: " prop="delayTime">
+          <Input v-model="blackFormData.tender_code" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="query: " prop="ipNotAllow">
-          <Input v-model="blackFormData.ipNotAllow" type="number" placeholder="请输入" />
+        <FormItem label="tender_name: " prop="ipNotAllow">
+          <Input v-model="blackFormData.tender_name" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_query: " prop="isAllow">
-          <Input v-model="blackFormData.isAllow" type="number" placeholder="请输入" />
+        <FormItem label="tender_address: " prop="isAllow">
+          <Input v-model="blackFormData.tender_address" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_table_name: " prop="ipCount">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="tender_contactor: " prop="ipCount">
+          <Input v-model="blackFormData.tender_contactor" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_table_name2: " prop="isPic">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="tender_phone_number: " prop="isPic">
+          <Input v-model="blackFormData.tender_phone_number" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_area: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="tender_email: " prop="allowCopy">
+          <Input v-model="blackFormData.tender_email" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_cate: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="project_scale: " prop="allowCopy">
+          <Input v-model="blackFormData.project_scale" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="sphinx_calssaid: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="total_fund: " prop="allowCopy">
+          <Input v-model="blackFormData.total_fund" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="is_show_description: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="foregin_company_fund: " prop="allowCopy">
+          <Input v-model="blackFormData.foregin_company_fund" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="is_show_total: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="self_source: " prop="allowCopy">
+          <Input v-model="blackFormData.self_source" type="number" placeholder="请输入" />
         </FormItem>
-        <FormItem label="rp: " prop="allowCopy">
-          <Input v-model="blackFormData.ipCount" type="number" placeholder="请输入" />
+        <FormItem label="overseas_fund: " prop="allowCopy">
+          <Input v-model="blackFormData.overseas_fund" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="private_fund: " prop="ipNotAllow">
+          <Input v-model="blackFormData.private_fund" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="state_fund: " prop="isAllow">
+          <Input v-model="blackFormData.state_fund" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="tender_mode: " prop="ipCount">
+          <Input v-model="blackFormData.tender_mode" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="create_time: " prop="isPic">
+          <Input v-model="blackFormData.create_time" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="tender_origanize_form: " prop="allowCopy">
+          <Input v-model="blackFormData.tender_origanize_form" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="supervise_dept_code: " prop="allowCopy">
+          <Input v-model="blackFormData.supervise_dept_code" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="supervise_dept_name: " prop="allowCopy">
+          <Input v-model="blackFormData.supervise_dept_name" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="approve_dept_code: " prop="allowCopy">
+          <Input v-model="blackFormData.approve_dept_code" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="approve_dept_name: " prop="allowCopy">
+          <Input v-model="blackFormData.approve_dept_name" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="report_duty: " prop="allowCopy">
+          <Input v-model="blackFormData.report_duty" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="tender_agency_code_type: " prop="allowCopy">
+          <Input v-model="blackFormData.tender_agency_code_type" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="tender_agency_code: " prop="allowCopy">
+          <Input v-model="blackFormData.tender_agency_code" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="tender_agency_name: " prop="allowCopy">
+          <Input v-model="blackFormData.tender_agency_name" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="tender_agency_address: " prop="allowCopy">
+          <Input v-model="blackFormData.tender_agency_address" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="tender_agency_contactor: " prop="allowCopy">
+          <Input v-model="blackFormData.tender_agency_contactor" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="tender_agency_phone_number: " prop="allowCopy">
+          <Input v-model="blackFormData.tender_agency_phone_number" type="number" placeholder="请输入" />
+        </FormItem>
+        <FormItem label="tender_agency_email: " prop="allowCopy">
+          <Input v-model="blackFormData.tender_agency_email" type="number" placeholder="请输入" />
         </FormItem>
       </Form>
       <div slot="footer">
@@ -126,40 +177,126 @@
 
     <!-- 详情弹出框 -->
     <Modal v-model="blackDetailModal" title="详情" width="600px">
-      <Form :model="blackDetail" :label-width="120">
-        <FormItem label="每天条数：">
-          <!-- <Input v-model="blackDetail.daily" placeholder="请输入" /> -->
-          {{blackDetail.daily}}
+      <Form ref="createForm" :model="blackFormData" :rules="blackRules" :label-width="150">
+        <FormItem label="isunion: " prop="weekly">
+          <!-- <Input v-model="blackFormData.isunion" placeholder="请输入" /> -->
+          {{blackFormData.isunion}}
         </FormItem>
-        <FormItem label="每周条数：">
-          <!-- <Input v-model="blackDetail.weekly" placeholder="请输入" /> -->
-          {{blackDetail.weekly}}
+        <FormItem label="tender_code_type: " prop="monthly">
+          <!-- <Input v-model="blackFormData.tender_code_type" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_code_type}}
         </FormItem>
-        <FormItem label="每月条数：">
-          <!-- <Input v-model="blackDetail.monthly" type="number" placeholder="请输入" /> -->
-          {{blackDetail.monthly}}
+        <FormItem label="tender_code: " prop="delayTime">
+          <!-- <Input v-model="blackFormData.tender_code" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_code}}
         </FormItem>
-        <FormItem label="延时时间：">
-          <!-- <Input v-model="blackDetail.delayTime" type="number" placeholder="请输入" /> -->
-          {{blackDetail.delayTime}}
+        <FormItem label="tender_name: " prop="ipNotAllow">
+          <!-- <Input v-model="blackFormData.tender_name" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_name}}
         </FormItem>
-        <FormItem label="允许登录个数：">
-          <!-- <Input v-model="blackDetail.ipCount" type="number" placeholder="请输入" /> -->
-          {{blackDetail.ipCount}}
+        <FormItem label="tender_address: " prop="isAllow">
+          <!-- <Input v-model="blackFormData.tender_address" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_address}}
         </FormItem>
-        <FormItem label="信息转成图片：">
-          <!-- <Radio-group :model.sync="blackDetail.isPic">
-            <Radio value="true">是</Radio>
-            <Radio value="false">否</Radio>
-          </Radio-group>-->
-          {{blackDetail.isPic ? '是' : '否'}}
+        <FormItem label="tender_contactor: " prop="ipCount">
+          <!-- <Input v-model="blackFormData.tender_contactor" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_contactor}}
         </FormItem>
-        <FormItem label="允许复制：">
-          <!-- <Radio-group :model.sync="blackFormData.allowCopy">
-            <Radio value="true">是</Radio>
-            <Radio value="false">否</Radio>
-          </Radio-group>-->
-          {{blackDetail.allowCopy ? '是' : '否'}}
+        <FormItem label="tender_phone_number: " prop="isPic">
+          <!-- <Input v-model="blackFormData.tender_phone_number" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_phone_number}}
+        </FormItem>
+        <FormItem label="tender_email: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.tender_email" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_email}}
+        </FormItem>
+        <FormItem label="project_scale: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.project_scale" type="number" placeholder="请输入" /> -->
+          {{blackFormData.project_scale}}
+        </FormItem>
+        <FormItem label="total_fund: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.total_fund" type="number" placeholder="请输入" /> -->
+          {{blackFormData.total_fund}}
+        </FormItem>
+        <FormItem label="foregin_company_fund: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.foregin_company_fund" type="number" placeholder="请输入" /> -->
+          {{blackFormData.foregin_company_fund}}
+        </FormItem>
+        <FormItem label="self_source: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.self_source" type="number" placeholder="请输入" /> -->
+          {{blackFormData.self_source}}
+        </FormItem>
+        <FormItem label="overseas_fund: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.overseas_fund" type="number" placeholder="请输入" /> -->
+          {{blackFormData.overseas_fund}}
+        </FormItem>
+        <FormItem label="private_fund: " prop="ipNotAllow">
+          <!-- <Input v-model="blackFormData.private_fund" type="number" placeholder="请输入" /> -->
+          {{blackFormData.private_fund}}
+        </FormItem>
+        <FormItem label="state_fund: " prop="isAllow">
+          <!-- <Input v-model="blackFormData.state_fund" type="number" placeholder="请输入" /> -->
+          {{blackFormData.state_fund}}
+        </FormItem>
+        <FormItem label="tender_mode: " prop="ipCount">
+          <!-- <Input v-model="blackFormData.tender_mode" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_mode}}
+        </FormItem>
+        <FormItem label="create_time: " prop="isPic">
+          <!-- <Input v-model="blackFormData.create_time" type="number" placeholder="请输入" /> -->
+          {{blackFormData.create_time}}
+        </FormItem>
+        <FormItem label="tender_origanize_form: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.tender_origanize_form" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_origanize_form}}
+        </FormItem>
+        <FormItem label="supervise_dept_code: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.supervise_dept_code" type="number" placeholder="请输入" /> -->
+          {{blackFormData.supervise_dept_code}}
+        </FormItem>
+        <FormItem label="supervise_dept_name: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.supervise_dept_name" type="number" placeholder="请输入" /> -->
+          {{blackFormData.supervise_dept_name}}
+        </FormItem>
+        <FormItem label="approve_dept_code: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.approve_dept_code" type="number" placeholder="请输入" /> -->
+          {{blackFormData.approve_dept_code}}
+        </FormItem>
+        <FormItem label="approve_dept_name: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.approve_dept_name" type="number" placeholder="请输入" /> -->
+          {{blackFormData.approve_dept_name}}
+        </FormItem>
+        <FormItem label="report_duty: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.report_duty" type="number" placeholder="请输入" /> -->
+          {{blackFormData.report_duty}}
+        </FormItem>
+        <FormItem label="tender_agency_code_type: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.tender_agency_code_type" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_agency_code_type}}
+        </FormItem>
+        <FormItem label="tender_agency_code: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.tender_agency_code" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_agency_code}}
+        </FormItem>
+        <FormItem label="tender_agency_name: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.tender_agency_name" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_agency_name}}
+        </FormItem>
+        <FormItem label="tender_agency_address: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.tender_agency_address" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_agency_address}}
+        </FormItem>
+        <FormItem label="tender_agency_contactor: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.tender_agency_contactor" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_agency_contactor}}
+        </FormItem>
+        <FormItem label="tender_agency_phone_number: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.tender_agency_phone_number" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_agency_phone_number}}
+        </FormItem>
+        <FormItem label="tender_agency_email: " prop="allowCopy">
+          <!-- <Input v-model="blackFormData.tender_agency_email" type="number" placeholder="请输入" /> -->
+          {{blackFormData.tender_agency_email}}
         </FormItem>
       </Form>
       <div slot="footer">
@@ -187,68 +324,153 @@ export default {
           minWidth: 100
         },
         {
-          title: "attachment_code",
-          key: "attachment_code",
+          title: "isunion",
+          key: "isunion",
           minWidth: 100
         },
         {
-          title: "attachment_file_name",
-          key: "attachment_file_name",
+          title: "tender_code_type",
+          key: "tender_code_type",
           minWidth: 100
         },
         {
-          title: "save_abs_path",
-          key: "save_abs_path",
+          title: "tender_code",
+          key: "tender_code",
           minWidth: 100
         },
         {
-          title: "file_type",
-          key: "file_type",
+          title: "tender_name",
+          key: "tender_name",
           minWidth: 100
         },
         {
-          title: "data_timestamp",
-          key: "data_timestamp",
+          title: "tender_address",
+          key: "tender_address",
           minWidth: 100
         },
         {
-          title: "md5",
-          key: "md5",
+          title: "tender_contactor",
+          key: "tender_contactor",
           minWidth: 100
         },
         {
-          title: "notice_id",
-          key: "notice_id",
+          title: "tender_phone_number",
+          key: "tender_phone_number",
           minWidth: 120
         },
         {
-          title: "member_id",
-          key: "member_id",
+          title: "tender_email",
+          key: "tender_email",
           minWidth: 100
         },
         {
-          title: "is_deleted",
-          key: "is_deleted",
+          title: "project_scale",
+          key: "project_scale",
           minWidth: 100
         },
         {
-          title: "sphinx_calssaid",
-          key: "sphinx_calssaid",
+          title: "total_fund",
+          key: "total_fund",
           minWidth: 100
         },
         {
-          title: "is_show_description",
-          key: "is_show_description",
+          title: "foregin_company_fund",
+          key: "foregin_company_fund",
           minWidth: 100
         },
         {
-          title: "is_show_total",
-          key: "is_show_total",
+          title: "self_source",
+          key: "self_source",
           minWidth: 100
         },
         {
-          title: "rp",
-          key: "rp",
+          title: "overseas_fund",
+          key: "overseas_fund",
+          minWidth: 100
+        },
+        {
+          title: "private_fund",
+          key: "private_fund",
+          minWidth: 100
+        },
+        {
+          title: "state_fund",
+          key: "state_fund",
+          minWidth: 100
+        },
+        {
+          title: "tender_mode",
+          key: "tender_mode",
+          minWidth: 100
+        },
+        {
+          title: "create_time",
+          key: "create_time",
+          minWidth: 120
+        },
+        {
+          title: "tender_origanize_form",
+          key: "tender_origanize_form",
+          minWidth: 100
+        },
+        {
+          title: "supervise_dept_code",
+          key: "supervise_dept_code",
+          minWidth: 100
+        },
+        {
+          title: "supervise_dept_name",
+          key: "supervise_dept_name",
+          minWidth: 100
+        },
+        {
+          title: "approve_dept_code",
+          key: "approve_dept_code",
+          minWidth: 100
+        },
+        {
+          title: "approve_dept_name",
+          key: "approve_dept_name",
+          minWidth: 100
+        },
+        {
+          title: "report_duty",
+          key: "report_duty",
+          minWidth: 100
+        },
+        {
+          title: "tender_agency_code_type",
+          key: "tender_agency_code_type",
+          minWidth: 100
+        },
+        {
+          title: "tender_agency_code",
+          key: "tender_agency_code",
+          minWidth: 100
+        },
+        {
+          title: "tender_agency_name",
+          key: "tender_agency_name",
+          minWidth: 100
+        },
+        {
+          title: "tender_agency_address",
+          key: "tender_agency_address",
+          minWidth: 100
+        },
+        {
+          title: "tender_agency_contactor",
+          key: "tender_agency_contactor",
+          minWidth: 100
+        },
+        {
+          title: "tender_agency_phone_number",
+          key: "tender_agency_phone_number",
+          minWidth: 100
+        },
+        {
+          title: "tender_agency_email",
+          key: "tender_agency_email",
           minWidth: 100
         },
         {
@@ -261,17 +483,36 @@ export default {
       dataList: [
         {
           id: 11,
-          attachment_code: 'admin',
-          attachment_file_name: 200,
-          save_abs_path: 300,
-          file_type: 1,
-          data_timestamp: "202.118.118.1",
-          md5: "202.118.118.2",
-          notice_id: 11,
-          member_id: 1,
-          is_deleted: 1,
-          create_time: 1,
-          last_modified_time: 1
+          isunion: "", // Number
+          tender_code_type: "", // String
+          tender_code: "", // String
+          tender_name: "", // String
+          tender_address: "", // String
+          tender_contactor: "", // String
+          tender_phone_number: "", // String
+          tender_email: "", // String
+          project_scale: "", // String
+          total_fund: "", // Number
+          foregin_company_fund: "", // Number
+          self_source: "", // Number
+          overseas_fund: "", // Number
+          private_fund: "", // Number
+          state_fund: "", // Number
+          tender_mode: "", // String
+          create_time: "", // String
+          tender_origanize_form: "", // String
+          supervise_dept_code: "", // String
+          supervise_dept_name: "", // String
+          approve_dept_code: "", // String
+          approve_dept_name: "", // String
+          report_duty: "", // String
+          tender_agency_code_type: "", // String
+          tender_agency_code: "", // String
+          tender_agency_name: "", // String
+          tender_agency_address: "", // String
+          tender_agency_contactor: "", // String
+          tender_agency_phone_number: "", // String
+          tender_agency_email: "" // String
         }
       ],
       loading: false,
@@ -284,16 +525,37 @@ export default {
       blackListModal: false,
       isUpdate: false,
       blackFormData: {
-        daily: "",
-        weekly: "",
-        monthly: "",
-        delayTime: "",
-        ipNotAllow: "",
-        isAllow: "",
-        ipCount: "",
-        isHunXiao: "",
-        isPic: "",
-        allowCopy: ""
+        id: 11,
+        isunion: "", // Number
+        tender_code_type: "", // String
+        tender_code: "", // String
+        tender_name: "", // String
+        tender_address: "", // String
+        tender_contactor: "", // String
+        tender_phone_number: "", // String
+        tender_email: "", // String
+        project_scale: "", // String
+        total_fund: "", // Number
+        foregin_company_fund: "", // Number
+        self_source: "", // Number
+        overseas_fund: "", // Number
+        private_fund: "", // Number
+        state_fund: "", // Number
+        tender_mode: "", // String
+        create_time: "", // String
+        tender_origanize_form: "", // String
+        supervise_dept_code: "", // String
+        supervise_dept_name: "", // String
+        approve_dept_code: "", // String
+        approve_dept_name: "", // String
+        report_duty: "", // String
+        tender_agency_code_type: "", // String
+        tender_agency_code: "", // String
+        tender_agency_name: "", // String
+        tender_agency_address: "", // String
+        tender_agency_contactor: "", // String
+        tender_agency_phone_number: "", // String
+        tender_agency_email: "" // String
       },
       blackRules: {},
       // 详情
@@ -324,7 +586,7 @@ export default {
     handleSubmit() {},
     handleReset() {},
     modalChange() {
-      this.$refs.createForm.resetFields()
+      this.$refs.createForm.resetFields();
     },
     handleSave() {}
   }

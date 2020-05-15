@@ -50,8 +50,8 @@
 
     <Modal v-model="roleModal" :title="isUpdate ? '编辑角色' : '新建角色'" :loading="roleModalLoading"  @on-visible-change="modalChange">
       <Form ref="createForm" :model="roleFormData" :rules="roleRules" :label-width="100">
-        <FormItem label="角色名：" prop="roleName">
-          <Input v-model="roleFormData.roleName" placeholder="请输入" />
+        <FormItem label="角色名：" prop="role_name">
+          <Input v-model="roleFormData.role_name" placeholder="请输入" />
         </FormItem>
         <FormItem label="备注：" prop="remark">
           <Input v-model="roleFormData.remark" placeholder="请输入" />
@@ -75,18 +75,20 @@ export default {
       roleModal: false,
       roleModalLoading: false,
       roleRules: {
-        roleName: [{ required: true, message: "请输入角色名称", trigger: "blur" }]
+        role_name: [{ required: true, message: "请输入角色名称", trigger: "blur" }]
       },
       roleFormData: {
-        roleName:'',
+        role_name:'',
         remark: ''
       },
       searchForm: {
-        total: 0,
-        pageNumber: 10,
-        pageSize: 1
+        
       },
-      pageForm: {},
+      pageForm: {
+        total: 0,
+        pageNumber: 1,
+        pageSize: 10
+      },
       rules: {},
       columns: [
         {
@@ -95,11 +97,16 @@ export default {
           align: "center"
         },
         {
-          title: "角色名",
-          key: "roleName",
+          title: "ID",
+          key: "id",
           minWidth: 100
         },
         {
+          title: "角色名",
+          key: "role_name",
+          minWidth: 100
+        },
+        /* {
           title: "创建日期",
           key: "createDate",
           minWidth: 100
@@ -108,8 +115,7 @@ export default {
           title: "备注",
           key: "remark",
           minWidth: 100
-        },
-
+        }, */
         {
           title: "操作",
           slot: "action",
@@ -118,7 +124,7 @@ export default {
         }
       ],
       dataList: [
-        {
+        /* {
           roleId: 1,
           roleName: "管理员",
           createDate: "2020-05-07 00:00:00",
@@ -135,7 +141,7 @@ export default {
           roleName: "主管",
           createDate: "2020-05-07 00:00:00",
           remark: "cccc"
-        }
+        } */
       ],
       loading: false,
       currentIndex: -1,
@@ -151,7 +157,9 @@ export default {
         pageSize: this.pageForm.pageSize,
         pageNumber: this.pageForm.pageNumber
       }).then(res => {
-        // this.dataList = res.data.data;
+        if(res.code == 200){
+          this.dataList = res.data.data;
+        }
       });
     },
     handleSubmit() {
@@ -159,7 +167,7 @@ export default {
       queryCondition({
         pageSize: this.pageForm.pageSize,
         pageNumber: this.pageForm.pageNumber,
-        roleName: this.searchForm.roleName
+        role_name: this.searchForm.role_name
       }).then(res => {
 
       })
@@ -187,7 +195,7 @@ export default {
     pageChange() {},
     handleUpdate(index) {
       this.currentIndex = index
-      this.roleFormData = this.dataList[index];
+      this.roleFormData = {...this.dataList[index]};
       this.isUpdate = true;
       this.roleModal = true;
     },
@@ -207,10 +215,12 @@ export default {
         content: "<p>确认删除当前项?</p>",
         onOk: () => {
           roleDelete({
-            userIds: this.selectIdList.toString() + ','
+            roleIds: this.selectIdList.toString() + ','
           }).then(res => {
-            this.$Message.info("删除成功");
-            this.getList()
+            if(res.code == 200){
+              this.$Message.info("删除成功");
+              this.getList()
+            }
           });
         },
         onCancel: () => {
@@ -223,13 +233,13 @@ export default {
       let data;
       if (!this.isUpdate) {
         data = {
-          roleName: this.roleFormData.roleName,
+          role_name: this.roleFormData.role_name,
           remark: this.roleFormData.remark
         };
       } else {
         data = {
           id: this.dataList[this.currentIndex].id,
-          roleName: this.roleFormData.roleName,
+          role_name: this.roleFormData.role_name,
           remark: this.roleFormData.remark
         };
       }
@@ -237,11 +247,17 @@ export default {
         if(valid){
           if(!this.isUpdate){
             roleSave(data).then(res => {
-
+              if(res.code == 200) {
+                this.getList()
+                this.roleModal = false;
+              }
             })
           }else{
             roleUpdate(data).then(res => {
-
+              if(res.code == 200){
+                 this.getList()
+                this.roleModal = false;
+              }
             }) 
           }
         }else{

@@ -1,8 +1,5 @@
-import data from '../data.json'
-
 const pre = "/dashboard/";
 
-console.log(data)
 export default {
   path: "/dashboard",
   title: "数据管理",
